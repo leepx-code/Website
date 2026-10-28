@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  // Old shared links from the single-file version used #slug. Send them to the real page.
+  (function(){ var h=location.hash.slice(1); if(/^(remote-launchpad|social-media-manager|virtual-assistant|ai-project-manager|masterclass|assess)$/.test(h)) location.replace(h); })();
+</script>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LeepX — Remote jobs for freshers, skills to learn in 2026, earn in USD</title>
