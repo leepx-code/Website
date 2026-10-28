@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LeepX — Remote jobs for freshers, skills to learn in 2026, earn in USD</title>
+<meta name="description" content="LeepX: the skills to learn in 2026 for the highest paying remote jobs. Remote jobs for freshers, WFH jobs, freelancing, earn in USD. Take a FREE 3-minute assessment, get matched to a cohort, start getting opportunities." />
+<meta name="keywords" content="skills to learn in 2026, highest paying remote jobs in 2026, WFH jobs, jobs with no skills, remote jobs for freshers, earn in USD, earn in dollars, easy remote jobs, how to earn money online, career switch, freelancing, social media manager course, virtual assistant course" />
+<meta property="og:title" content="LeepX — Get job-ready for remote roles and global clients" />
+<meta property="og:description" content="FREE 3-minute assessment → matched to a cohort → portfolio → opportunities. Remote jobs for freshers, freelancing, earn in USD." />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/leepx.css" />
+<style>
+  :root{--maxw:1120px;--text:720px}
+  .ph{border-bottom:2px dashed var(--amber)}
+  svg.ic{flex:none;vertical-align:-.15em}
+  .pair .e{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.7);color:var(--ink)}
+  .box .e{color:var(--purple)}.box.cohort .e{color:var(--lime)}
+  .wa-foot svg{color:#54656F}
+  body{background:#fff}
+  h1{font-size:clamp(38px,5.4vw,66px);letter-spacing:-.04em;line-height:1.02}
+  h2{font-size:clamp(32px,4.6vw,56px);letter-spacing:-.035em;line-height:1.02}
+  .lead{font-size:clamp(17px,1.5vw,20px);line-height:1.6}
+  section.s{padding:clamp(96px,12vw,168px) 0}
+  @media(max-width:700px){section.s{padding:68px 0}}
+  .s-head{max-width:760px;margin:0 auto;text-align:center}
+  .s-head h2{margin-top:14px}
+  .s-head .lead{margin:22px auto 0;max-width:56ch}
+  .eyebrow{justify-content:center}
+  .card-soft{background:#fff;border:1px solid var(--n-200);border-radius:24px;box-shadow:0 1px 2px rgba(23,22,24,.03),0 16px 40px rgba(77,18,136,.06)}
+  /* nav */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:60;background:transparent;border:0;backdrop-filter:none;pointer-events:none}
+  .nav::before{content:"";position:absolute;inset:0;bottom:-28px;background:linear-gradient(to bottom,var(--nav-bg,#fff) 0%,var(--nav-bg,#fff) 45%,transparent 100%);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);-webkit-mask:linear-gradient(#000 55%,transparent);mask:linear-gradient(#000 55%,transparent);opacity:0;transition:opacity .35s;z-index:-1}
+  .nav.stuck::before{opacity:.92}
+  @media(max-width:700px){.nav::before{bottom:-12px;-webkit-mask:linear-gradient(#000 80%,transparent);mask:linear-gradient(#000 80%,transparent)}.nav::before{background:linear-gradient(to bottom,var(--nav-bg,#fff) 0%,var(--nav-bg,#fff) 82%,transparent 100%)}.nav.stuck::before{opacity:1}}
+  .nav-inner{padding:18px 24px;pointer-events:auto;position:relative;transition:color .35s}
+  .nav.on-dark{--nav-bg:#171618;color:#fff}
+  .nav.on-dark .nav-links a{color:rgba(255,255,255,.75)}.nav.on-dark .nav-links a:hover{color:#fff}
+  .nav.on-dark .nav-logo img{filter:brightness(0) invert(1)}
+  .nav.on-dark .btn-primary{background:var(--lime);color:var(--ink);box-shadow:none}
+  .nav.on-purple{--nav-bg:#4D1288;color:#fff}
+  .nav.on-purple .nav-links a{color:rgba(255,255,255,.8)}.nav.on-purple .nav-links a:hover{color:#fff}
+  .nav.on-purple .nav-logo img{filter:brightness(0) invert(1)}
+  .nav.on-purple .btn-primary{background:var(--lime);color:var(--ink);box-shadow:none}
+  body{padding-top:0}
+  .nav-burger{display:none;width:44px;height:44px;border:0;background:transparent;color:inherit;border-radius:12px;cursor:pointer;place-items:center;margin-right:-8px}
+  .nav-burger path{transition:transform .25s var(--ease),opacity .2s;transform-origin:12px 12px}
+  .nav.open .nav-burger .b1{transform:translateY(5px) rotate(45deg)}
+  .nav.open .nav-burger .b2{opacity:0}
+  .nav.open .nav-burger .b3{transform:translateY(-5px) rotate(-45deg)}
+  .nav-menu{display:none;position:absolute;left:12px;right:12px;top:calc(100% - 4px);background:#fff;border:1px solid var(--n-200);border-radius:18px;box-shadow:0 20px 50px rgba(23,22,24,.16);padding:8px;pointer-events:auto}
+  .nav-menu a{display:block;padding:14px 16px;font-weight:700;font-size:16px;color:var(--ink);border-radius:12px;text-decoration:none}
+  .nav-menu a:active{background:var(--p-50)}
+  @media(max-width:820px){.nav-burger{display:grid}.nav.open .nav-menu{display:block}}
+  @media(max-width:700px){.nav-cta{display:none}.nav-inner{padding:12px 20px}}
+  .hero{padding-top:clamp(120px,14vw,160px)!important}
+  /* ============ hero ============ */
+  .hero{position:relative;padding:clamp(56px,7vw,88px) 0 0;text-align:center;overflow:hidden;background:radial-gradient(1100px 600px at 50% -20%,var(--p-100),transparent 65%)}
+  .hero .blob{position:absolute;width:560px;height:560px;border-radius:50%;filter:blur(90px);opacity:.45;pointer-events:none;z-index:0}
+  .hero .b1{background:#EAFBD5;left:-200px;top:180px}.hero .b2{background:var(--p-200);right:-220px;top:60px}
+  .hero .in{position:relative;z-index:1}
+  .hero h1{max-width:18ch;margin:0 auto}
+  @media(max-width:700px){.hero h1{max-width:14ch}.hero h1 .hl{white-space:normal}.hero h1 .hl::after{height:.22em}}
+  .hero .lines{margin:22px auto 0;max-width:48ch;font-size:clamp(17px,1.5vw,20px);color:var(--n-600);line-height:1.55;font-weight:500}
+  .hero .lines b{color:var(--ink);font-weight:800}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+  .tiny{font-size:13px;color:var(--n-500);margin-top:14px;display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+  .tiny span::before{content:"✓ ";color:var(--teal);font-weight:800}
+  .stage{position:relative;max-width:960px;margin:32px auto 0;padding:0 24px}
+  .video{position:relative;border-radius:28px;overflow:hidden;background:var(--p-900);aspect-ratio:16/9;box-shadow:0 30px 80px rgba(77,18,136,.22),0 2px 6px rgba(23,22,24,.06);will-change:transform}
+  .video video{width:100%;height:100%;object-fit:cover;display:block}
+  .video .play{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-start;padding:clamp(12px,2.4vw,22px);background:linear-gradient(180deg,rgba(27,6,51,0) 55%,rgba(27,6,51,.35));cursor:pointer;transition:opacity .3s}
+  .video .play span{display:inline-flex;align-items:center;gap:10px;padding:9px 16px 9px 11px;border-radius:99px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:14px;font-weight:700;transition:background .25s,transform .25s var(--bounce)}
+  .video .play:hover span{background:rgba(255,255,255,.32);transform:scale(1.03)}
+  .video .play span i{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;flex:none}
+  @media(max-width:600px){.video .play span{font-size:12.5px;padding:7px 12px 7px 8px;gap:8px}.video .play span i{width:26px;height:26px}}
+  .video.playing .play{opacity:0;pointer-events:none}
+  .stage .sticker.s1{position:absolute;top:-16px;left:8px;z-index:2}
+  .stage .sticker.s2{position:absolute;top:-16px;right:8px;z-index:2}
+  .hero-snaps{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:36px auto 0;max-width:960px;padding:0 24px}
+  .hero-snaps .snap{flex:1 1 280px;max-width:320px}
+  @media(max-width:700px){.hero-snaps{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 12px;margin-top:24px;scrollbar-width:none}.hero-snaps::-webkit-scrollbar{display:none}.hero-snaps .snap{flex:0 0 82%;max-width:none;scroll-snap-align:center}}
+  /* marquee */
+  .marquee{margin-top:clamp(72px,8vw,110px);border-block:1px solid var(--n-200);background:var(--n-50);padding:16px 0;overflow:hidden;white-space:nowrap}
+  .marquee .track{display:inline-flex;gap:48px;animation:mq 46s linear infinite;font-weight:700;font-size:14px;color:var(--n-600);letter-spacing:.01em}
+  .marquee .track span::before{content:"✦";margin-right:14px;color:var(--purple)}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  /* snapshot */
+  .snap{background:#fff;border:1px solid var(--n-200);border-radius:20px;padding:18px 20px;box-shadow:0 10px 30px rgba(23,22,24,.06);display:flex;gap:14px;align-items:flex-start;color:var(--ink);text-align:left}
+  .snap .av{width:40px;height:40px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:800;font-size:12px;color:#fff;background:var(--purple)}
+  .snap .av.t{background:var(--teal)}.snap .av.a{background:var(--amber);color:var(--ink)}.snap .av.c{background:var(--coral)}.snap .av.k{background:var(--ink)}.snap .av.l{background:var(--lime);color:var(--ink)}
+  .snap q{display:block;font-weight:600;font-size:15px;line-height:1.45;quotes:"“" "”"}
+  .snap .who{margin-top:8px;font-size:12.5px;color:var(--n-500);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .snap .who b{color:var(--ink)}
+  .snap .who .tag{background:var(--p-50);color:var(--purple);border-radius:99px;padding:2px 8px;font-weight:800;font-size:11px}
+  .snap-row{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:64px}
+  .snap-row .snap{flex:1 1 300px;max-width:420px}
+  /* ============ fold 2 ============ */
+  .fomo{color:#fff}
+  /* cohort call wallpaper */
+  .fomo{background:#1B0633;position:relative;overflow:hidden}
+  .fomo .wrap{position:relative;z-index:2}
+  .call{position:absolute;inset:0;z-index:0;background:url(assets/cohort-call.jpg) center/cover no-repeat;opacity:1}
+  .fomo .veil{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 62% 58% at 50% 50%,rgba(27,6,51,.18) 0%,rgba(27,6,51,.32) 35%,rgba(27,6,51,.7) 70%,#1B0633 100%),radial-gradient(38% 26% at 50% 30%,rgba(27,6,51,.75) 0%,rgba(27,6,51,0) 100%)}
+  .fomo .datepill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:var(--p-200);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;padding:7px 14px;border-radius:99px;margin-bottom:22px;backdrop-filter:blur(6px)}
+  .fomo .datepill i{width:7px;height:7px;border-radius:50%;background:var(--lime);animation:rec 1.4s infinite}
+  @keyframes rec{50%{opacity:.25}}
+  .fomo .datepill i{flex:none}
+  @media(max-width:700px){.fomo .datepill{font-size:11px;letter-spacing:.03em;border-radius:16px;padding:8px 14px;text-align:left;line-height:1.5}}
+  @media(prefers-reduced-motion:reduce){.fomo .datepill i{animation:none}}
+
+  .fomo h2{color:#fff}.fomo .lead{color:rgba(255,255,255,.65)}
+  .fomo .eyebrow{color:var(--p-200)}.fomo .eyebrow .num{background:rgba(255,255,255,.12)}
+  .carousel{margin:64px calc(50% - 50vw) 0;width:100vw;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);padding:20px 0}
+  .car-track{display:flex;gap:24px;width:max-content;animation:car 70s linear infinite;will-change:transform}
+  .carousel:hover .car-track{animation-play-state:paused}
+  @keyframes car{to{transform:translateX(calc(-50% - 12px))}}
+  .carousel .snap{width:440px;max-width:80vw;padding:28px 30px;border:0;border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.35);gap:18px;transition:transform .4s var(--bounce),box-shadow .4s}
+  .carousel .snap:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 34px 70px rgba(0,0,0,.45)}
+  .carousel .snap q{font-size:18px;line-height:1.5}
+  .carousel .snap .av{width:46px;height:46px;font-size:13px}
+  .carousel .snap .who{margin-top:12px;font-size:13px}
+  @media(max-width:700px){.carousel{margin-top:40px}.car-track{gap:14px}.carousel .snap{width:290px;padding:20px 22px;gap:14px}.carousel .snap q{font-size:16px}.count{gap:22px 28px;margin-top:48px}}
+  @media(prefers-reduced-motion:reduce){.car-track{animation:none;overflow-x:auto}}
+  .count{display:flex;gap:clamp(24px,4vw,56px);flex-wrap:wrap;justify-content:center;margin-top:72px;text-align:center}
+  .count b{display:block;font-size:clamp(34px,3.8vw,52px);letter-spacing:-.04em;color:var(--lime);line-height:1;white-space:nowrap}
+  .count span{display:block;margin-top:8px;font-size:13px;color:rgba(255,255,255,.55);font-weight:600;max-width:20ch;margin-inline:auto}
+  .fomo .cta-row{margin-top:56px}
+  /* what you get: sub labels + live cohort cards */
+  .sub{display:flex;align-items:center;gap:12px;font-weight:800;font-size:clamp(20px,2.2vw,26px);letter-spacing:-.02em;margin-top:64px}
+  .livedot{width:10px;height:10px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 0 rgba(242,109,109,.6);animation:livep 1.6s infinite;flex:none}
+  @keyframes livep{70%{box-shadow:0 0 0 10px rgba(242,109,109,0)}100%{box-shadow:0 0 0 0 rgba(242,109,109,0)}}
+  .crow-label{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:30px 0 14px}
+  .crow-label.wl{color:var(--n-500);margin-top:44px}
+  .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .cgrid.two{grid-template-columns:repeat(2,1fr)}
+  .cc{background:#fff;border:1px solid var(--n-200);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:8px;box-shadow:0 10px 30px rgba(77,18,136,.06);transition:transform .3s var(--bounce),box-shadow .3s}
+  .cc:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(77,18,136,.12)}
+  .cc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .cc-ic{width:46px;height:46px;border-radius:14px;background:var(--p-50);color:var(--purple);display:grid;place-items:center}
+  .cc-st{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--ink);background:#EAFBD5;padding:6px 10px;border-radius:99px}
+  .cc-st i{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:livep 1.6s infinite}
+  .cc-st.wl{background:var(--n-100);color:var(--n-600)}
+  .cc h3{font-size:19px;line-height:1.2}
+  .cc-who{font-size:13px;font-weight:700;color:var(--purple)}
+  .cc-desc{font-size:14.5px;color:var(--n-600);line-height:1.55}
+  .cc-cta{margin-top:auto;padding-top:12px;font-weight:800;font-size:14px;color:var(--purple);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .cc-cta svg{transition:transform .25s var(--bounce)}.cc:hover .cc-cta svg{transform:translateX(4px)}
+  .cc.wl{background:var(--n-50);box-shadow:none}
+  .cc.wl .cc-ic{background:var(--n-100);color:var(--n-600)}
+  .cc.wl .cc-who{color:var(--n-600)}
+  .cc.wl .cc-cta{color:var(--ink)}
+  .cc-acts{margin-top:auto;padding-top:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .cc-acts .cc-cta{margin-top:0;padding-top:0}
+  .cunsure{margin-top:28px;font-size:15px;font-weight:600;color:var(--n-600)}
+  .cunsure a{color:var(--purple);font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  @media(max-width:900px){.cgrid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-24px;padding:4px 24px 14px;scrollbar-width:none}.cgrid::-webkit-scrollbar{display:none}.cc{flex:0 0 82%;scroll-snap-align:center}}
+  @media(prefers-reduced-motion:reduce){.livedot,.cc-st i{animation:none}}
+  .walk{font-weight:700;font-size:17px;color:var(--n-700);margin-bottom:16px}
+  /* ============ fold 3 pairs ============ */
+  .pairs{margin:28px auto 0;max-width:960px;display:grid;gap:14px}
+  .pairs-head{display:grid;grid-template-columns:1fr 64px 1fr;gap:14px;margin:28px auto 0;max-width:960px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--n-400);padding:0 4px}
+  .pair{display:grid;grid-template-columns:1fr 64px 1fr;gap:14px;align-items:stretch}
+  .pair .p,.pair .o{border-radius:20px;padding:22px 24px;font-weight:700;font-size:16px;display:flex;gap:14px;align-items:center;border:1px solid transparent;transition:transform .3s var(--bounce)}
+  .pair:hover .p{transform:translateX(-4px)}.pair:hover .o{transform:translateX(4px)}
+  .pair .p{background:var(--coral-soft);color:var(--ink)}
+  .pair .o{background:var(--teal-soft)}
+  .pair .e{font-size:24px;flex:none}
+  .pair .arr{display:grid;place-items:center;font-size:26px;font-weight:800;color:var(--purple)}
+  @media(max-width:700px){.pairs-head,.pair{grid-template-columns:1fr 16px 1fr;gap:6px}.pairs-head{font-size:10px;letter-spacing:.08em;margin-top:22px}.pair .arr{font-size:15px}.pair .p,.pair .o{flex-direction:column;align-items:flex-start;gap:8px;padding:12px;font-size:13px;line-height:1.35;border-radius:14px}.pair .e{width:30px;height:30px;border-radius:9px;font-size:17px}.pair .e svg{width:17px;height:17px}.pair:hover .p,.pair:hover .o{transform:none}}
+  /* ============ case studies ============ */
+  .case-s.tint{background:var(--p-50)}
+  .case-s:not(.tint){background:#fff}
+  .case{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,88px);align-items:center}
+  .case-s:not(.tint) .txt{order:2}
+  @media(max-width:860px){.case{grid-template-columns:1fr}.case-s:not(.tint) .txt{order:0}}
+  .case .k{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--purple);font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+  .case h3{font-size:clamp(26px,3vw,38px);letter-spacing:-.03em;line-height:1.08;margin-top:14px}
+  .case p.d{margin-top:18px;color:var(--n-600);font-size:17px;line-height:1.6;max-width:50ch}
+  .case .ba{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+  .case .ba span{background:#fff;border:1px solid var(--n-200);border-radius:99px;padding:8px 14px;font-size:13px;font-weight:700}
+  .case .ba span.b::before{content:"Before · ";color:var(--coral)}.case .ba span.a::before{content:"After · ";color:var(--teal)}
+  .case .vis{position:relative}
+  .case .vis .big{position:absolute;top:-22px;right:-8px;z-index:2}
+  .case .honest{margin-top:16px;font-size:12.5px;color:var(--n-400)}
+  /* WhatsApp chat */
+  .wa{border-radius:26px;overflow:hidden;box-shadow:0 30px 70px rgba(77,18,136,.16),0 2px 6px rgba(23,22,24,.06);background:#EFEAE2;max-width:460px;margin:0 auto;font-size:15px;transform:rotate(-1deg)}
+  .wa-head{background:#075E54;color:#fff;display:flex;align-items:center;gap:12px;padding:14px 16px}
+  .wa-head .av{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:800;font-size:12px;color:#fff;background:var(--purple)}
+  .wa-head .av.t{background:var(--teal)}.wa-head .av.a{background:var(--amber);color:var(--ink)}.wa-head .av.c{background:var(--coral)}.wa-head .av.k{background:var(--ink)}.wa-head .av.l{background:var(--lime);color:var(--ink)}
+  .wa-head b{display:block;font-size:15px;font-weight:700;line-height:1.2}
+  .wa-head small{display:block;font-size:12px;opacity:.75;margin-top:2px}
+  .wa-head .wa-dots{margin-left:auto;font-size:20px;opacity:.85}
+  .wa-body{padding:16px 14px 10px;display:flex;flex-direction:column;gap:8px;background:#E5DDD5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23000' stroke-opacity='.045' stroke-width='1.5'%3E%3Ccircle cx='20' cy='20' r='6'/%3E%3Cpath d='M70 15l8 8-8 8-8-8z'/%3E%3Ccircle cx='95' cy='60' r='4'/%3E%3Cpath d='M25 80c6-8 14-8 20 0'/%3E%3Cpath d='M60 95h16M68 87v16'/%3E%3C/g%3E%3C/svg%3E")}
+  .wa-date{align-self:center;background:#FFFFFFCC;color:#54656F;font-size:12px;font-weight:600;padding:5px 12px;border-radius:8px;box-shadow:0 1px 1px rgba(0,0,0,.08);margin-bottom:4px}
+  .wa-msg{position:relative;align-self:flex-start;background:#fff;color:#111B21;border-radius:10px;border-top-left-radius:2px;padding:8px 12px 20px 12px;max-width:88%;line-height:1.45;box-shadow:0 1px 1px rgba(0,0,0,.08);font-weight:500}
+  .wa-msg::before{content:"";position:absolute;left:-7px;top:0;border:8px solid transparent;border-top-color:#fff;border-right-color:#fff;border-radius:0 0 0 4px}
+  .wa-msg .wa-time{position:absolute;right:10px;bottom:5px;font-size:11px;color:#667781;font-weight:500}
+  .wa-msg .wa-time i{font-style:normal;color:#53BDEB;letter-spacing:-2px}
+  .wa-foot{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#F0F2F5;color:#54656F;font-size:18px}
+  .wa-foot .in{flex:1;background:#fff;border-radius:99px;padding:9px 14px;font-size:14px;color:#8696A0}
+  .case .vis .big{position:absolute;top:-18px;right:6px;z-index:2}
+  /* ============ roadmap ============ */
+  .road{margin:64px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:st}
+  @media(max-width:900px){.road{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.road{grid-template-columns:1fr}}
+  .box{padding:28px;position:relative;transition:transform .35s var(--bounce),box-shadow .35s}
+  .box:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(77,18,136,.14)}
+  .box::before{counter-increment:st;content:"0" counter(st);font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--lime);padding:5px 9px;border-radius:8px;display:inline-block;margin-bottom:18px}
+  .box .e{font-size:30px;position:absolute;right:22px;top:20px}
+  .box h3{font-size:19px;margin-bottom:8px}.box p{font-size:14.5px;color:var(--n-600);line-height:1.55}
+  .box.cohort{background:var(--purple);color:#fff}.box.cohort p{color:var(--p-200)}.box.cohort::before{background:var(--lime);color:var(--ink)}
+  .inside{margin:28px auto 0;background:var(--n-50);border-radius:28px;padding:32px;max-width:var(--maxw)}
+  .inside .k{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--purple)}
+  .inside .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  @media(max-width:700px){.inside .mini{grid-template-columns:1fr}}
+  .inside .mini div{background:#fff;border-radius:16px;padding:18px 20px;font-weight:700;font-size:15px;border:1px solid var(--n-200)}
+  .inside .mini small{display:block;color:var(--n-500);font-weight:600;font-size:12.5px;margin-top:4px}
+  .flags{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .flags span{background:#fff;border:1px solid var(--teal);border-radius:99px;padding:7px 13px;font-size:13px;font-weight:700}
+  .flags span{display:inline-flex;align-items:center;gap:6px;color:var(--ink)}.flags span svg{color:var(--teal)}
+  /* ============ founders ============ */
+  .stats{display:flex;justify-content:center;gap:clamp(32px,6vw,80px);flex-wrap:wrap;margin-top:56px;padding-top:40px;border-top:1px solid var(--n-200);text-align:center}
+  .stats b{display:block;font-size:clamp(26px,2.6vw,34px);letter-spacing:-.03em;color:var(--purple);line-height:1}
+  .stats span{display:block;margin-top:6px;font-size:13px;color:var(--n-500);font-weight:600}
+  .founders{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:64px}
+  @media(max-width:760px){.founders{grid-template-columns:1fr}}
+  .fcard{padding:32px;display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:start}
+  @media(max-width:480px){.fcard{grid-template-columns:1fr}}
+  .fcard img,.fcard .ph-pic{width:150px;height:190px;object-fit:cover;border-radius:20px}
+  .fcard .ph-pic{display:grid;place-items:center;background:var(--p-100);font-weight:800;font-size:32px;color:var(--purple)}
+  .fcard h3{font-size:26px;letter-spacing:-.02em}
+  .fcard .role{font-size:13px;color:var(--n-500);font-weight:700;margin-top:2px}
+  .fcard ul{margin:14px 0 0;list-style:none;display:flex;flex-direction:column;gap:8px}
+  .fcard li{font-size:14.5px;color:var(--n-700);font-weight:500;padding-left:20px;position:relative;line-height:1.5}
+  .fcard li::before{content:"✦";position:absolute;left:0;color:var(--purple)}
+  /* ============ faq ============ */
+  .faq{max-width:760px;margin:56px auto 0}
+  details{border-top:1px solid var(--n-200);padding:22px 0}
+  details:last-child{border-bottom:1px solid var(--n-200)}
+  summary{cursor:pointer;font-weight:700;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:26px;color:var(--purple);transition:transform .3s var(--bounce);flex:none}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin-top:12px;color:var(--n-600);font-size:16px;max-width:64ch;line-height:1.6}
+  /* ============ final ============ */
+  .final{background:var(--purple);color:#fff;padding:clamp(110px,14vw,180px) 0;text-align:center;position:relative;overflow:hidden}
+  .final .blob{position:absolute;width:700px;height:700px;border-radius:50%;filter:blur(120px);opacity:.5;background:var(--p-400);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
+  .final .wrap{position:relative}
+  .final h2{color:#fff;max-width:14ch;margin:0 auto}
+  .final .lead{color:var(--p-200);margin:22px auto 0;max-width:40ch}
+  .final .eyebrow{color:var(--p-200)}.final .eyebrow .num{background:rgba(255,255,255,.15)}
+  /* ============ footer ============ */
+  footer{padding:72px 0 40px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:48px}
+  @media(max-width:800px){.fgrid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.fgrid{grid-template-columns:1fr}}
+  .fgrid h4{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--n-400);margin-bottom:14px}
+  .fgrid a{display:block;margin:0 0 10px;font-size:14px;font-weight:600;color:var(--n-600);text-decoration:none}
+  .fgrid a:hover{color:var(--purple)}
+  .fgrid .icons{display:flex;gap:10px;flex-wrap:wrap}
+  .fgrid .icons a{width:44px;height:44px;border-radius:12px;background:var(--n-100);display:grid;place-items:center;font-size:20px;margin:0;transition:transform .2s var(--bounce),background .2s}
+  .fgrid .icons a:hover{background:var(--p-100);transform:translateY(-2px)}
+  footer .row{border-top:1px solid var(--n-200);padding-top:24px}
+  footer .seo{font-size:12px;color:var(--n-400);line-height:1.7;margin-bottom:20px;max-width:90ch}
+  /* mobile sticky */
+  .mcta{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-top:1px solid var(--n-200);display:none;justify-content:space-between;align-items:center;gap:12px}
+  .mcta small{font-size:12px;color:var(--n-600);font-weight:700}
+  @media(max-width:480px){.btn{white-space:normal;text-align:center;line-height:1.25}.mcta .btn{white-space:nowrap}}
+  @media(max-width:700px){.mcta{display:flex}body{padding-bottom:70px}}
+  @media(max-width:700px){.hero-cta{display:none}.hero .stage{margin-top:52px}}
+  @media(max-width:360px){.mcta small{display:none}.mcta .btn{flex:1;justify-content:center}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top" aria-label="LeepX home"><img src="assets/logo-primary.png" alt="LeepX" /></a>
+    <nav class="nav-links">
+      <a href="#proof">Results</a>
+      <a href="#outcomes">What you get</a>
+      <a href="#story-1">Stories</a>
+      <a href="#how">How it works</a>
+      <a href="#founders">Founders</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary btn-sm nav-cta" href="assess.html">Take the FREE assessment →</a>
+    <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path class="b1" d="M4 7h16"/><path class="b2" d="M4 12h16"/><path class="b3" d="M4 17h16"/></svg></button>
+  </div>
+  <nav class="nav-menu" id="navMenu" aria-label="Menu">
+    <a href="#proof">Results</a><a href="#outcomes">What you get</a><a href="#story-1">Stories</a><a href="#how">How it works</a><a href="#founders">Founders</a><a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap in">
+        <h1 class="reveal" style="--d:.08s">Get job-ready for <span class="hl">remote roles</span> and global clients.</h1>
+    <p class="lines reveal" style="--d:.16s">The only academy that holds your hand across the bridge: from role confusion and skill gaps to remote-friendly roles, with clarity and preparation.</p>
+    <div class="cta-row hero-cta reveal" style="--d:.24s"><a class="btn btn-primary" href="assess.html">Take the FREE 3-minute assessment →</a></div>
+  </div>
+  <div class="stage reveal" style="--d:.36s">
+    <span class="sticker amber s1"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> One minute with Shreya, our founder</span>
+    <div class="video" id="video">
+      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" src="assets/hero.mp4"></video>
+      <div class="play" id="playBtn" role="button" aria-label="Play video with sound"><span><i><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--purple)"><path d="M8 5v14l11-7z"/></svg></i>Watch with sound</span></div>
+    </div>
+  </div>
+  <div class="hero-snaps">
+    <div class="snap reveal" style="--d:.1s"><div class="av">SG</div><div><q>Shreya helped me land a premium sockwear brand for their social media management.</q><div class="who"><b>Srishti</b><span class="tag">SMM</span></div></div></div>
+    <div class="snap reveal" style="--d:.2s"><div class="av a">AB</div><div><q>I applied what I learned on my own LinkedIn and was already seeing results.</q><div class="who"><b>Anshu</b><span class="tag">LinkedIn</span></div></div></div>
+    <div class="snap reveal" style="--d:.3s"><div class="av c">SC</div><div><q>I came very close to giving an interview with the opportunity you guys brought.</q><div class="who"><b>Shreeya</b><span class="tag"><svg class="ic " width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg> career switcher</span></div></div></div>
+  </div>
+  <div class="marquee" aria-hidden="true"><div class="track"><span>Portfolio &amp; projects</span><span>Career switch</span><span>Global opportunities</span><span>Freelancing</span><span>Remote jobs for freshers</span><span>Advanced role switching</span><span>Side-hustles</span><span>Pitching to global companies</span><span>Digital personal brand</span><span>Remote tools and methodologies</span><span>Interview preparation</span><span>Portfolio &amp; projects</span><span>Career switch</span><span>Global opportunities</span><span>Freelancing</span><span>Remote jobs for freshers</span><span>Advanced role switching</span><span>Side-hustles</span><span>Pitching to global companies</span><span>Digital personal brand</span><span>Remote tools and methodologies</span><span>Interview preparation</span></div></div>
+</section>
+
+<!-- ============ FOLD 2 · PROOF ============ -->
+<section class="s fomo" id="proof" data-nav="on-dark">
+  <div class="call" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="s-head">
+      <span class="datepill reveal"><i></i><span>Upcoming LIVE cohorts starting this month · <span id="monthYear"></span> · Limited seats</span></span>
+      <h2 class="reveal" style="--d:.08s">They already took the leap. When are you taking yours?</h2>
+      <p class="lead reveal" style="--d:.16s">Straight from the graduation call. Short, because they said it better than we can.</p>
+    </div>
+    <div class="carousel reveal" id="carousel" aria-label="Learner quotes">
+      <div class="car-track"><div class="snap"><div class="av">SG</div><div><q>I'm in talks with a fintech brand in Bangalore. The co-founder left Microsoft after eight years. I approached him.</q><div class="who"><b>Srishti Garg</b><span class="tag">SMM</span></div></div></div><div class="snap"><div class="av t">SD</div><div><q>It was extremely validating. I discussed it with my parents as well.</q><div class="who"><b>Smitha Dhanya</b><span class="tag">portfolio review</span></div></div></div><div class="snap"><div class="av k">B</div><div><q>I'm a beginner and I was really scared. Now I'd be confident enough to talk to anybody about social media management.</q><div class="who"><b>Bharathi</b><span class="tag">beginner → confident</span></div></div></div><div class="snap"><div class="av l">KI</div><div><q>I'm an introvert. Because of this cohort I had good talks with people, and we helped each other build portfolios.</q><div class="who"><b>Keerthana</b><span class="tag">portfolio</span></div></div></div><div class="snap"><div class="av a">A</div><div><q>I've printed all the resources. They're in front of my eyes. I'm more efficient now.</q><div class="who"><b>Ayushi</b><span class="tag">resources</span></div></div></div><div class="snap"><div class="av c">M</div><div><q>I'd never built reels. One assignment was to build a reel. It's really amazing.</q><div class="who"><b>Manita</b><span class="tag">first project</span></div></div></div><div class="snap"><div class="av c">SC</div><div><q>I came actually very close to giving an interview with the opportunity that you guys brought.</q><div class="who"><b>Shreeya Chafekar</b><span class="tag">career switcher</span></div></div></div><div class="snap"><div class="av a">AB</div><div><q>I started applying whatever I learned from you on my own LinkedIn, and I was already seeing results.</q><div class="who"><b>Anshu Banga</b><span class="tag">LinkedIn</span></div></div></div><div class="snap"><div class="av t">NB</div><div><q>Bombing you all with a lot of questions and then getting the answers for them. That was really supportive.</q><div class="who"><b>Neha Bhatia</b><span class="tag">mentor access</span></div></div></div><div class="snap"><div class="av">SG</div><div><q>I'm in talks with a fintech brand in Bangalore. The co-founder left Microsoft after eight years. I approached him.</q><div class="who"><b>Srishti Garg</b><span class="tag">SMM</span></div></div></div><div class="snap"><div class="av t">SD</div><div><q>It was extremely validating. I discussed it with my parents as well.</q><div class="who"><b>Smitha Dhanya</b><span class="tag">portfolio review</span></div></div></div><div class="snap"><div class="av k">B</div><div><q>I'm a beginner and I was really scared. Now I'd be confident enough to talk to anybody about social media management.</q><div class="who"><b>Bharathi</b><span class="tag">beginner → confident</span></div></div></div><div class="snap"><div class="av l">KI</div><div><q>I'm an introvert. Because of this cohort I had good talks with people, and we helped each other build portfolios.</q><div class="who"><b>Keerthana</b><span class="tag">portfolio</span></div></div></div><div class="snap"><div class="av a">A</div><div><q>I've printed all the resources. They're in front of my eyes. I'm more efficient now.</q><div class="who"><b>Ayushi</b><span class="tag">resources</span></div></div></div><div class="snap"><div class="av c">M</div><div><q>I'd never built reels. One assignment was to build a reel. It's really amazing.</q><div class="who"><b>Manita</b><span class="tag">first project</span></div></div></div><div class="snap"><div class="av c">SC</div><div><q>I came actually very close to giving an interview with the opportunity that you guys brought.</q><div class="who"><b>Shreeya Chafekar</b><span class="tag">career switcher</span></div></div></div><div class="snap"><div class="av a">AB</div><div><q>I started applying whatever I learned from you on my own LinkedIn, and I was already seeing results.</q><div class="who"><b>Anshu Banga</b><span class="tag">LinkedIn</span></div></div></div><div class="snap"><div class="av t">NB</div><div><q>Bombing you all with a lot of questions and then getting the answers for them. That was really supportive.</q><div class="who"><b>Neha Bhatia</b><span class="tag">mentor access</span></div></div></div></div>
+    </div>
+    <div class="count">
+      <div class="reveal" style="--d:.1s"><b data-count="500" data-suffix="K+">0</b><span>community</span></div>
+      <div class="reveal" style="--d:.2s"><b>8–12 weeks</b><span>to a portfolio, depending on the cohort</span></div>
+      <div class="reveal" style="--d:.3s"><b data-count="28" data-suffix="+">0</b><span>placement partners (and growing!)</span></div>
+    </div>
+    <div class="cta-row reveal"><a class="btn btn-lime" href="assess.html">Take the FREE assessment →</a></div>
+  </div>
+</section>
+
+
+<!-- ============ CASE STUDY 1 ============ -->
+<section class="s case-s tint" id="story-1"><div class="wrap"><div class="case">
+      <div class="txt reveal">
+        <div class="k">01 · Wanted to create content</div>
+        <h3>Srishti walked in to learn content. She walked out with brands in her inbox.</h3>
+        <p class="d">She'd planned to get into content creation "from a long, long time ago." Inside the cohort she built a portfolio and a pitch deck around one target brand. Then the calls started: a premium sockwear brand for social media management, and a Bangalore fintech founder who wanted her as the face of the brand.</p>
+        <div class="ba"><span class="b">planning "someday"</span><span class="a">2 clients converted</span></div>
+        <p class="honest">Deals were "in talks" on graduation day. We quote learners as they said it.</p>
+      </div>
+      <div class="vis reveal" style="--d:.12s">
+        <span class="sticker lime big"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> SMM · cohort 1</span>
+        <div class="wa">
+          <div class="wa-head"><div class="av ">SG</div><div><b>Srishti Garg</b><small>LeepX Cohort 1 · graduation call</small></div><span class="wa-dots">⋮</span></div>
+          <div class="wa-body"><div class="wa-date">Graduation day</div><div class="wa-msg">Shreya helped me land a premium sockwear brand for their social media management. I have the pitch and the deck. Everything ready.<span class="wa-time">20:51 <i>✓✓</i></span></div><div class="wa-msg">Brands want me to be the face of the brand, because of how I understand metrics and social media.<span class="wa-time">21:29 <i>✓✓</i></span></div></div>
+          <div class="wa-foot"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg><span class="in">Message</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg><svg class="ic " width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg></div>
+        </div>
+      </div>
+    </div></div></section>
+<!-- ============ FOLD 3 · OUTCOMES ============ -->
+<section class="s" id="outcomes">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="eyebrow reveal"><span class="num">What you get</span> Cohorts, and what every one of them leaves you with</div>
+      <h2 class="reveal" style="--d:.08s">One assessment. The right cohort. Proof you can show.</h2>
+    </div>
+    <div class="sub reveal">Our cohorts</div>
+    <div class="crow-label reveal"><span class="livedot"></span> Enrolling now</div>
+    <div class="cgrid two"><article class="cc  reveal" style="--d:0.00s">
+          <div class="cc-top"><span class="cc-ic"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /> <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" /> <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" /> <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></svg></span><span class="cc-st"><i></i> LIVE · enrolling</span></div>
+          <h3>Remote Launchpad</h3><p class="cc-who">For freshers and first-time remote job seekers</p><p class="cc-desc">We help you pick a role, learn the tools, build a complete portfolio and send your first applications.</p>
+          <div class="cc-acts"><a class="btn btn-primary btn-sm" href="remote-launchpad.html" onclick="window.lxTrack&&lxTrack('enrol_click',{cohort:'Remote Launchpad'})">Enrol now →</a><a class="cc-cta cc-alt" href="assess.html">Check if I'm a match <svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a></div>
+        </article><article class="cc  reveal" style="--d:0.07s">
+          <div class="cc-top"><span class="cc-ic"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z" /></svg></span><span class="cc-st"><i></i> LIVE · enrolling</span></div>
+          <h3>Become an AI-powered Project Manager</h3><p class="cc-who">For people with work experience who coordinate teams · 16 weeks</p><p class="cc-desc">Scoping, agile delivery and a specialised track, with AI tools throughout. Four capstone milestones and a job-ready portfolio.</p>
+          <div class="cc-acts"><a class="btn btn-primary btn-sm" href="ai-project-manager.html" onclick="window.lxTrack&&lxTrack('enrol_click',{cohort:'Become an AI-powered Project Manager'})">Enrol now →</a><a class="cc-cta cc-alt" href="assess.html">Check if I'm a match <svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a></div>
+        </article><article class="cc  reveal" style="--d:0.14s">
+          <div class="cc-top"><span class="cc-ic"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></svg></span><span class="cc-st"><i></i> LIVE · enrolling</span></div>
+          <h3>Become a Social Media Manager</h3><p class="cc-who">For people who enjoy content and brands</p><p class="cc-desc">Strategy, content and analytics, with a portfolio built on a real brand. Ends with a pitch deck and outreach.</p>
+          <div class="cc-acts"><a class="btn btn-primary btn-sm" href="social-media-manager.html" onclick="window.lxTrack&&lxTrack('enrol_click',{cohort:'Become a Social Media Manager'})">Enrol now →</a><a class="cc-cta cc-alt" href="assess.html">Check if I'm a match <svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a></div>
+        </article><article class="cc  reveal" style="--d:0.21s">
+          <div class="cc-top"><span class="cc-ic"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /></svg></span><span class="cc-st"><i></i> LIVE · enrolling</span></div>
+          <h3>Become a Virtual Assistant</h3><p class="cc-who">For organised people who like running things · 12 weeks</p><p class="cc-desc">Run inboxes, calendars, research and operations for founders abroad. Work samples and a first paid trial.</p>
+          <div class="cc-acts"><a class="btn btn-primary btn-sm" href="virtual-assistant.html" onclick="window.lxTrack&&lxTrack('enrol_click',{cohort:'Become a Virtual Assistant'})">Enrol now →</a><a class="cc-cta cc-alt" href="assess.html">Check if I'm a match <svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a></div>
+        </article><article class="cc  reveal" style="--d:0.28s">
+          <div class="cc-top"><span class="cc-ic"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /> <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg></span><span class="cc-st"><i></i> LIVE · enrolling</span></div>
+          <h3>Attract inbound via LinkedIn</h3><p class="cc-who">For professionals who want opportunities to come to them</p><p class="cc-desc">Headline, story, content system and outreach that gets recruiters and clients messaging you first.</p>
+          <a class="cc-cta" href="assess.html">Check if I'm a match <svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
+        </article></div>
+    <div class="crow-label wl reveal"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" /></svg> Opening soon · join the waitlist</div>
+    <div class="cgrid two"><article class="cc wl reveal" style="--d:0.00s">
+          <div class="cc-top"><span class="cc-ic"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7h6v6" /> <path d="m22 7-8.5 8.5-5-5L2 17" /></svg></span><span class="cc-st wl"><svg class="ic " width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" /></svg> Waitlist</span></div>
+          <h3>Scale your freelancing career</h3><p class="cc-who">For people already freelancing or taking side clients</p><p class="cc-desc">Find better clients, raise your rates, package your services and build steady monthly income.</p>
+          <a class="cc-cta" href="assess.html">Join the waitlist <svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a>
+        </article></div>
+    <p class="cunsure reveal">Not sure which one? <a href="assess.html">Take the FREE assessment <svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></a></p>
+        <div class="sub reveal" style="margin-top:96px">Where you are → what you leave with, whichever cohort you pick</div>
+    <div class="pairs-head reveal"><span>Where you're stuck</span><span></span><span>What you walk away with</span></div>
+    <div class="pairs">
+      <div class="pair reveal"><div class="p"><span class="e">😩</span>Stuck in the same role, same salary</div><div class="arr">→</div><div class="o"><span class="e"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg></span>A clear roadmap: which role, what to learn, what to skip</div></div>
+      <div class="pair reveal" style="--d:.06s"><div class="p"><span class="e"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>Never worked with an international or dollar client</div><div class="arr">→</div><div class="o"><span class="e"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>A CV built for global remote roles</div></div>
+      <div class="pair reveal" style="--d:.12s"><div class="p"><span class="e"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="16" x="4" y="3" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="m8 19-2 3"/><path d="m18 22-2-3"/><path d="M8 15h.01"/><path d="M16 15h.01"/></svg></span>Tired of the commute, want remote</div><div class="arr">→</div><div class="o"><span class="e"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></span>An optimised LinkedIn that gets inbound</div></div>
+      <div class="pair reveal" style="--d:.18s"><div class="p"><span class="e">🤯</span>Know what to do, can't execute alone</div><div class="arr">→</div><div class="o"><span class="e"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></span>A portfolio and real projects, reviewed</div></div>
+      <div class="pair reveal" style="--d:.24s"><div class="p"><span class="e">🫣</span>Need a push to actually start</div><div class="arr">→</div><div class="o"><span class="e"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>Proof of work you can show a client or recruiter</div></div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:48px"><p class="walk">You walk away with all five, whichever cohort you pick.</p><a class="btn btn-primary" href="assess.html">Take the FREE assessment →</a></div>
+  </div>
+</section>
+
+
+<!-- ============ CASE STUDY 2 ============ -->
+<section class="s case-s " id="story-2"><div class="wrap"><div class="case">
+      <div class="txt reveal">
+        <div class="k">02 · Full-time job, wanted out</div>
+        <h3>Shreeya followed Shreya for a year and a half before she found something she could relate to.</h3>
+        <p class="d">Remote opportunities kept showing up in her feed, but nothing fit. When the cohort opened she "was like, please, let me just get shortlisted for this one." She left her full-time job, won the Career Switcher award, and got to the interview stage on an opportunity the team brought in.</p>
+        <div class="ba"><span class="b">full-time job, scrolling</span><span class="a">career switcher · interview stage</span></div>
+      </div>
+      <div class="vis reveal" style="--d:.12s">
+        <span class="sticker amber big"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg> Career Switcher award</span>
+        <div class="wa">
+          <div class="wa-head"><div class="av c">SC</div><div><b>Shreeya Chafekar</b><small>LeepX Cohort 1 · graduation call</small></div><span class="wa-dots">⋮</span></div>
+          <div class="wa-body"><div class="wa-date">Graduation day</div><div class="wa-msg">I was finding it difficult to find something I could relate to. When you came up with this cohort I was like, please, let me just get shortlisted.<span class="wa-time">14:21 <i>✓✓</i></span></div><div class="wa-msg">I came actually very close to giving an interview with the opportunity that you guys brought.<span class="wa-time">14:56 <i>✓✓</i></span></div></div>
+          <div class="wa-foot"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg><span class="in">Message</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg><svg class="ic " width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg></div>
+        </div>
+      </div>
+    </div></div></section>
+<!-- ============ HOW IT WORKS ============ -->
+<section class="s" id="how">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="eyebrow reveal"><span class="num">How it works</span> Four steps. No fluff.</div>
+      <h2 class="reveal" style="--d:.08s">Assessment → role → cohort → opportunities.</h2>
+    </div>
+    <div class="road">
+      <div class="box card-soft reveal"><span class="e"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span><h3>Quick assessment</h3><p>3 minutes. Where you are, what you know, what you want, how much time you have.</p></div>
+      <div class="box card-soft reveal" style="--d:.08s"><span class="e"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><h3>Matched to a role</h3><p>Remote Launchpad, Social Media Manager, Virtual Assistant and more. One cohort that fits, not a menu.</p></div>
+      <div class="box card-soft cohort reveal" style="--d:.16s"><span class="e"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h3>Join the cohort</h3><p>8 to 12 weeks depending on the cohort. Live, with a mentor on WhatsApp. Every week ends with something you can show.</p></div>
+      <div class="box card-soft reveal" style="--d:.24s"><span class="e"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><h3>Get matched opportunities</h3><p>Finish the portfolio, our team sends roles and clients your way as they come in.</p></div>
+    </div>
+    <div class="inside reveal">
+      <div class="k">Inside the cohort</div>
+      <div class="mini">
+        <div>Learn the role<small>Tools, workflows, real assignments</small></div>
+        <div>Build proof<small>Portfolio, projects, CV, LinkedIn</small></div>
+        <div>Go outbound<small>Outreach scripts, pitch deck, follow-ups</small></div>
+      </div>
+      <div class="flags"><span><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Role locked</span><span><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> First portfolio piece</span><span><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> CV + LinkedIn reviewed</span><span><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Pitch-ready</span></div>
+    </div>
+    <div class="snap-row">
+      <div class="snap reveal"><div class="av t">NB</div><div><q>Bombing you all with questions and getting the answers. That was really supportive.</q><div class="who"><b>Neha Bhatia</b><span class="tag">mentor access</span></div></div></div>
+      <div class="snap reveal" style="--d:.1s"><div class="av">R</div><div><q>Those who have completed the portfolios are getting regular calls from us regarding opportunities.</q><div class="who"><b>Riya</b><span class="tag">LeepX team</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ CASE STUDY 3 ============ -->
+<section class="s case-s tint" id="story-3"><div class="wrap"><div class="case">
+      <div class="txt reveal">
+        <div class="k">03 · Learner to agency owner</div>
+        <h3>Ayushi took what she learned and started her own agency. It now brings in about $2,000 a month.</h3>
+        <p class="d">She printed every resource from the cohort and kept them in front of her while she worked. After graduating she didn't go looking for one job. She set up her own social media agency, took on clients directly, and now earns around $2,000 a month running it.</p>
+        <div class="ba"><span class="b">learning the craft</span><span class="a">own agency · ~$2,000 a month</span></div>
+        <p class="honest">Agency and income as shared with the LeepX team after the cohort. Individual results vary.</p>
+      </div>
+      <div class="vis reveal" style="--d:.12s">
+        <span class="sticker teal big"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 10h.01" /> <path d="M12 14h.01" /> <path d="M12 6h.01" /> <path d="M16 10h.01" /> <path d="M16 14h.01" /> <path d="M16 6h.01" /> <path d="M8 10h.01" /> <path d="M8 14h.01" /> <path d="M8 6h.01" /> <path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3" /> <rect x="4" y="2" width="16" height="20" rx="2" /></svg> Agency owner</span>
+        <div class="wa">
+          <div class="wa-head"><div class="av k">A</div><div><b>Ayushi</b><small>LeepX Cohort 1</small></div><span class="wa-dots">⋮</span></div>
+          <div class="wa-body"><!-- First message: wording approved by Ayushi (confirmed by Sambhav, 2 Oct 2026) --><div class="wa-msg">Hi Shreya, I have started my own agency! I'm working with clients directly now and earning around $2,000 a month. Everything I use, I learned in the cohort. Thank you 💜<span class="wa-time"><i>✓✓</i></span></div><div class="wa-msg">The way you guys help all of us together, and help all of us individually, that was really great. I've downloaded all the resources you gave, printed them out, and they're in front of my eyes. I'm more efficient now.<span class="wa-time"><i>✓✓</i></span></div><div class="wa-msg">Overall it has been an incredible journey, and I'm extremely grateful that you guys did this.<span class="wa-time"><i>✓✓</i></span></div></div>
+          <div class="wa-foot"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg><span class="in">Message</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg><svg class="ic " width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg></div>
+        </div>
+      </div>
+    </div></div></section>
+<!-- ============ FOUNDERS ============ -->
+<section class="s" id="founders" style="background:var(--n-50)">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="eyebrow reveal"><span class="num">Founders</span> Who's behind this</div>
+      <h2 class="reveal" style="--d:.08s">Built by people who made the switch.</h2>
+    </div>
+    <div class="founders">
+      <div class="fcard card-soft reveal">
+        <img src="assets/shreya-portrait.jpg" alt="Shreya Mahendru" />
+        <div><h3>Shreya Mahendru</h3><div class="role">Founder · Product &amp; Project Manager · TEDx speaker</div>
+          <ul><li>Freelanced for clients across Singapore, Europe and the US</li><li>Built a 500K+ community teaching remote work and dollar income</li><li>Partnered with ChatGPT, Adobe, LinkedIn, Razorpay, WeWork</li></ul></div>
+      </div>
+      <div class="fcard card-soft reveal" style="--d:.1s">
+        <img src="assets/riya.jpg" alt="Riya Arora" />
+        <div><h3>Riya Arora</h3><div class="role">Co-founder · Product Manager · AI Creator</div>
+          <ul><li>5+ years of experience across global and Indian industry</li><li>Ex Senior Product Manager at an Edtech startup</li><li>Mentoring early-career professionals</li></ul></div>
+      </div>
+    </div>
+    <div class="stats reveal">
+      <div><b>$145K+</b><span>value of packages &amp; opportunities placed</span></div>
+      <div><b data-count="500" data-suffix="K+">0</b><span>community across platforms</span></div>
+      <div><b data-count="1000" data-suffix="+">0</b><span>mentees so far</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ CASE STUDY 4 ============ -->
+<section class="s case-s " id="story-4"><div class="wrap"><div class="case">
+      <div class="txt reveal">
+        <div class="k">04 · Everything from scratch</div>
+        <h3>Smitha built her first portfolio in a new field. The review changed how she saw herself.</h3>
+        <p class="d">New environment, new portfolio, learning everything from scratch. On review day Shreya's reaction to her work was "extremely validating," enough that she went home and told her parents. She got the same feedback again on graduation day when she won her award.</p>
+        <div class="ba"><span class="b">new field, no proof</span><span class="a">portfolio · award · told her parents</span></div>
+      </div>
+      <div class="vis reveal" style="--d:.12s">
+        <span class="sticker coral big"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg> Portfolio review</span>
+        <div class="wa">
+          <div class="wa-head"><div class="av t">SD</div><div><b>Smitha Dhanya</b><small>LeepX Cohort 1 · graduation call</small></div><span class="wa-dots">⋮</span></div>
+          <div class="wa-body"><div class="wa-date">Graduation day</div><div class="wa-msg">I got a very abrupt reaction from Shreya for the portfolio I'd created. It was extremely validating. It made me feel a lot more confident about what I was doing.<span class="wa-time">05:43 <i>✓✓</i></span></div><div class="wa-msg">Riya is always available on WhatsApp. That meant a lot when you're stepping into a new environment.<span class="wa-time">06:12 <i>✓✓</i></span></div></div>
+          <div class="wa-foot"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg><span class="in">Message</span><svg class="ic " width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg><svg class="ic " width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg></div>
+        </div>
+      </div>
+    </div></div></section>
+<!-- ============ FAQ ============ -->
+<section class="s" id="faq">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow reveal"><span class="num">FAQ</span> What people ask us</div><h2 class="reveal" style="--d:.08s">Straight answers.</h2></div>
+    <div class="faq reveal">
+      <details><summary>Is the assessment just a quiz that sells me a course?</summary><p>It matches you to a role and a cohort. You share your contact details, see your result on screen straight away, and get the full version by email. If a program fits, we say so. If it doesn't, we say that too. We'd rather have the right 50 people than the wrong 500.</p></details>
+      <details><summary>What if I miss a live session?</summary><p>The recording goes up the same day, and you can drop your question into the 24-hour Q&amp;A channel instead. You will not be behind.</p></details>
+      <details><summary>Do you guarantee a job?</summary><p>No, and be careful of anyone who does. What we guarantee is the system, the feedback and the live access. By the end of your cohort you will have a profile, a portfolio and an outreach process built and reviewed. What you do with them is yours.</p></details>
+      <details><summary>How much time will this take each week?</summary><p>Most people spend four to six hours a week: the modules, the work they generate, and the Sunday Q&amp;A. It is designed around people who already have a full-time job.</p></details>
+      <details><summary>I do not have a tech background. Is this still for me?</summary><p>Yes. Global remote work is not a tech-only market. Operations, marketing, design, content, support, project management and admin roles are all hired remotely from India. What matters is proof, not pedigree.</p></details>
+      <details><summary>I have nothing to put in a portfolio.</summary><p>You build two or three real samples during the cohort, reviewed before they go anywhere near an application. Nobody starts with a portfolio, they leave with one.</p></details>
+      <details><summary>Do I keep access after the cohort ends?</summary><p>Yes. The Resource Hub, the templates and the recordings stay with you, and you stay in the alumni community where opportunities get referred forward.</p></details>
+      <details><summary>Is there a refund policy?</summary><p>Yes, and it's a fair one: if both of us put in full effort for the full length of the cohort, you show up, do the work, use the feedback, and you still don't find value, you can ask for a refund. However, in case of drop-outs or discontinuation due to personal reasons from your side, no refund will be issued.</p></details>
+      <details><summary>I'm outside India. Can I pay in another currency?</summary><p>Yes. Learners outside India can pay in their local currency; international payment options are available at checkout.</p></details>
+      <details><summary>I have zero experience. Can I do this?</summary><p>Yes. Cohort 1 had complete beginners. The assessment starts you at the right point.</p></details>
+      <details><summary>I have 8+ years of experience. Too basic?</summary><p>For the Social Media Manager or Virtual Assistant cohorts, maybe. The LinkedIn cohort and the AI-powered Project Manager cohort (waitlist open) are built for experienced professionals. Take the assessment; it tells you honestly.</p></details>
+      <details><summary>What does it cost?</summary><p>Programs are premium, one-time, EMI available. The assessment asks what fits your budget so we only recommend what makes sense for you.</p></details>
+      <details><summary>Which skills should I learn in 2026 for the highest paying remote jobs?</summary><p>Social Media Manager, Virtual Assistant and AI-powered Project Manager are among the roles companies hire remotely right now. The first two are enrolling, and the third has a waitlist. The FREE assessment tells you which one fits your background.</p></details>
+      <details><summary>Are there remote jobs for freshers, or jobs with no skills?</summary><p>Yes, but not without proof. Our Remote Launchpad and Become-a-VA cohorts are built for freshers and career switchers with zero experience. You leave with a portfolio, a CV and a LinkedIn that gets calls.</p></details>
+      <details><summary>Can I earn in USD or in dollars from India?</summary><p>Learners pitch to global companies and freelance clients who pay in USD. We teach positioning, proposals and follow-ups. No income is guaranteed; the proof you build is what gets you paid.</p></details>
+      <details><summary>Will you spam me on WhatsApp?</summary><p>No. We ask for your WhatsApp number with the assessment so a human on our team can send your result and answer questions. No drip campaigns, and you can ask us to stop anytime.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL ============ -->
+<section class="final" data-nav="on-purple">
+  <div class="blob"></div>
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="num">Your move</span></div>
+    <h2 class="reveal" style="--d:.08s">The door's still open. For now.</h2>
+    <p class="lead reveal" style="--d:.16s">3 minutes. FREE. You get matched to a role, not sold a course.</p>
+    <div class="cta-row reveal" style="--d:.24s"><a class="btn btn-lime" href="assess.html">Take the FREE assessment →</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><img src="assets/logo-primary.png" alt="LeepX" style="height:22px;margin-bottom:14px" /><p style="font-size:14px;color:var(--n-500);max-width:32ch;line-height:1.6">Career switch, global remote roles, freelancing. Start with the FREE assessment.</p></div>
+      <div><h4>Cohorts</h4><a href="remote-launchpad.html">Remote Launchpad</a><a href="social-media-manager.html">Become a Social Media Manager</a><a href="virtual-assistant.html">Become a Virtual Assistant</a><a href="ai-project-manager.html">Become an AI-powered Project Manager</a><a href="#outcomes">Waitlist cohorts →</a></div>
+      <div><h4>Community</h4><a href="https://academy.theleepx.com/l/ad00303ec0" target="_blank" rel="noopener">LeepX Academy (free)</a><a href="#">Instagram</a><a href="#">LinkedIn</a></div>
+      <div><h4>Company</h4><a href="privacy.html#contact">Contact</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
+    </div>
+    <p class="seo">Popular searches: skills to learn in 2026 · highest paying remote jobs in 2026 · WFH jobs · remote jobs for freshers · easy remote jobs · earn in USD · earn in dollars · how to earn money online · jobs with no skills</p>
+    <div class="row"><span>© 2026 LeepX</span><span style="font-size:13px">Job-ready, not job-guaranteed.</span></div>
+  </div>
+</footer>
+
+<div class="mcta"><small>3 min · no login</small><a class="btn btn-primary btn-sm" href="assess.html">Take the FREE assessment →</a></div>
+
+<script src="js/config.js"></script>
+<script src="js/track.js"></script>
+<script src="js/fab.js"></script>
+<script>
+  const v=document.getElementById('heroVideo'),box=document.getElementById('video'),pb=document.getElementById('playBtn');
+  function play(){box.classList.add('playing');v.muted=false;v.loop=false;v.currentTime=0;v.controls=true;v.play();lxTrack('video_play');}
+  // silent preview only while the video is on screen
+  if('IntersectionObserver' in window) new IntersectionObserver(es=>{ if(box.classList.contains('playing')) return; es[0].isIntersecting ? v.play().catch(()=>{}) : v.pause(); },{threshold:.25}).observe(box);
+  pb.addEventListener('click',play);
+  const wb=document.getElementById('watchBtn');wb&&wb.addEventListener('click',e=>{e.preventDefault();box.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(play,500);});
+  // dynamic month · year
+  const my=document.getElementById('monthYear'); if(my) my.textContent=new Date().toLocaleString('en-IN',{month:'long',year:'numeric'});
+  // nav border on scroll
+  const nav=document.getElementById('nav');
+  const secs=[...document.querySelectorAll('section')];
+  function navTheme(){nav.classList.toggle('stuck',scrollY>8);const y=scrollY+40;let cls='';for(const sec of secs){if(y>=sec.offsetTop&&y<sec.offsetTop+sec.offsetHeight){cls=sec.dataset.nav||'';break;}}nav.classList.toggle('on-dark',cls==='on-dark');nav.classList.toggle('on-purple',cls==='on-purple');}
+  addEventListener('scroll',navTheme,{passive:true});navTheme();
+  // mobile menu
+  const burger=document.getElementById('navBurger'), menu=document.getElementById('navMenu');
+  function setMenu(open){ nav.classList.toggle('open',open); burger.setAttribute('aria-expanded',open?'true':'false'); }
+  burger.addEventListener('click',e=>{ e.stopPropagation(); setMenu(!nav.classList.contains('open')); });
+  menu.addEventListener('click',e=>{ if(e.target.closest('a')) setMenu(false); });
+  document.addEventListener('click',e=>{ if(!e.target.closest('#nav')) setMenu(false); });
+  // reveal + count-up
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');io.unobserve(e.target);e.target.querySelectorAll('[data-count]').forEach(count);if(e.target.dataset.count)count(e.target);}),{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  function count(el){const end=+el.dataset.count,suf=el.dataset.suffix||'';if(reduce){el.textContent=end.toLocaleString('en-US')+suf;return;}const t0=performance.now(),dur=1200;(function f(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=Math.round(end*e).toLocaleString('en-US')+suf;if(p<1)requestAnimationFrame(f);})(t0);}
+  // gentle parallax on hero video
+  if(!reduce){addEventListener('scroll',()=>{const r=box.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;box.style.transform=`translateY(${(r.top-innerHeight*.3)*-.06}px)`;},{passive:true});}
+</script>
+</body>
+</html>

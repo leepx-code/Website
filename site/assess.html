@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LeepX — Tell us where you're stuck</title>
+<meta name="description" content="A 3-minute self-assessment. Tell us where you're stuck; we'll map your next leap." />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/leepx.css" />
+<style>
+  body{background:radial-gradient(900px 500px at 90% -10%,var(--p-100),transparent 60%),radial-gradient(700px 400px at -10% 100%,#EAFBD5,transparent 55%) fixed,#fff;min-height:100vh}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:860px;margin:0 auto}
+  .top img{height:28px}
+  .icon-btn{width:40px;height:40px;border-radius:50%;border:0;background:transparent;color:var(--n-600);display:grid;place-items:center;cursor:pointer;transition:background .15s,color .15s;text-decoration:none}
+  .icon-btn:hover{background:var(--n-100);color:var(--ink)}
+  .prog{max-width:860px;margin:0 auto;padding:0 24px}
+  .bar{height:4px;background:var(--n-200);border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--purple);border-radius:99px;width:0;transition:width .5s var(--ease)}
+  .prog small{display:block;margin-top:10px;font-size:12px;font-weight:600;color:var(--n-400)}
+  main{max-width:860px;margin:0 auto;padding:36px 24px 120px}
+  .screen{animation:pop .45s var(--bounce) both}
+  @keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+  .screen h1{font-size:clamp(28px,4.2vw,44px);max-width:22ch}
+  .screen .sub{margin-top:12px;color:var(--n-600);font-size:17px}
+  .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:32px}
+  .opts.many{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:700px){.opts,.opts.many{grid-template-columns:1fr}}
+  .opt{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--n-200);border-radius:16px;padding:16px 18px;cursor:pointer;font-weight:700;font-size:15.5px;text-align:left;font-family:inherit;color:var(--ink);transition:transform .2s var(--bounce),border-color .15s,background .15s,box-shadow .2s;position:relative}
+  .opt .e{width:40px;height:40px;border-radius:12px;background:var(--n-100);display:grid;place-items:center;flex:none;color:var(--purple);transition:background .15s}
+  .opt.on .e{background:rgba(255,255,255,.7)}
+  .opt{padding-right:40px}
+  .picker{margin-top:26px}
+  .pk-search{display:flex;align-items:center;gap:10px;border:2px solid var(--n-200);border-radius:14px;padding:0 14px;background:#fff;color:var(--n-400);transition:border-color .15s}
+  .pk-search:focus-within{border-color:var(--purple)}
+  .pk-search input{border:0;outline:0;flex:1;padding:13px 0;font:inherit;font-size:16px;background:transparent;color:var(--ink)}
+  .pk-tray{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .pk-tray:empty{margin-top:0}
+  .pk-chip{display:inline-flex;align-items:center;gap:6px;background:var(--purple);color:#fff;border-radius:99px;padding:5px 6px 5px 12px;font-size:13px;font-weight:700}
+  .pk-chip button{width:20px;height:20px;border-radius:50%;border:0;background:rgba(255,255,255,.22);color:#fff;cursor:pointer;font-size:14px;line-height:1;display:grid;place-items:center}
+  .pk-main{display:grid;grid-template-columns:240px 1fr;margin-top:14px;border:1px solid var(--n-200);border-radius:20px;background:#fff;overflow:hidden;height:400px}
+  .pk-tabs{display:flex;flex-direction:column;gap:2px;padding:10px;background:var(--n-50);border-right:1px solid var(--n-200);overflow:auto}
+  .pk-tab{display:flex;justify-content:space-between;align-items:center;gap:8px;text-align:left;border:0;background:transparent;font:inherit;font-size:14px;font-weight:600;color:var(--n-600);padding:10px 12px;border-radius:10px;cursor:pointer;flex:none}
+  .pk-tab:hover{color:var(--ink)}
+  .pk-tab.on{background:#fff;color:var(--purple);font-weight:800;box-shadow:0 1px 2px rgba(23,22,24,.06),0 4px 12px rgba(23,22,24,.05)}
+  .pk-tab b{font-size:11px;background:var(--purple);color:#fff;border-radius:99px;min-width:20px;height:20px;display:grid;place-items:center;padding:0 6px;flex:none}
+  .pk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:8px;padding:16px;align-content:start;overflow:auto}
+  .pk{display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid var(--n-200);border-radius:12px;background:#fff;padding:11px 12px;font:inherit;font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+  .pk:hover{border-color:var(--p-300)}
+  .pk.on{border-color:var(--purple);background:var(--p-50)}
+  .ck{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--n-300);display:grid;place-items:center;flex:none;color:transparent;transition:background .15s,border-color .15s}
+  .pk.on .ck,.pk-none.on .ck{background:var(--purple);border-color:var(--purple);color:#fff}
+  .pk-empty{grid-column:1/-1;color:var(--n-500);font-size:14.5px;padding:8px 4px}
+  .pk-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px}
+  .pk-add{display:flex;gap:8px;flex:1;min-width:240px;max-width:440px}
+  .pk-add input{flex:1;min-width:0;font:inherit;font-size:15px;padding:10px 14px;border:2px solid var(--n-200);border-radius:12px;background:#fff}
+  .pk-add input:focus{outline:none;border-color:var(--purple)}
+  .pk-none{display:inline-flex;align-items:center;gap:10px;border:0;background:transparent;font:inherit;font-size:14.5px;font-weight:700;color:var(--n-600);cursor:pointer;padding:8px 4px}
+  .pk-none.on{color:var(--purple)}
+  @media(max-width:700px){.pk-main{grid-template-columns:1fr;height:auto}.pk-tabs{flex-direction:row;border-right:0;border-bottom:1px solid var(--n-200);overflow-x:auto}.pk-tab{white-space:nowrap}.pk-grid{max-height:340px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+  .phone-row{display:grid;grid-template-columns:150px 1fr;gap:10px}
+  @media(max-width:480px){.phone-row{grid-template-columns:120px 1fr}}
+  .field select{width:100%;font-family:inherit;font-size:16px;padding:14px 12px;border:2px solid var(--n-200);border-radius:14px;background:#fff;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2376767F' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+  .field select:focus{outline:none;border-color:var(--purple)}
+  .opt .t small{display:block;font-weight:500;font-size:13px;line-height:1.4;color:var(--n-500);margin-top:3px}
+  .opt.on .t small{color:var(--n-700)}
+  .opt:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:var(--shadow)}
+  .opt.on{border-color:var(--ink);background:var(--lime);box-shadow:4px 4px 0 var(--ink)}
+  .opt.on::after{content:"✓";position:absolute;right:14px;font-weight:800}
+  .nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:32px;gap:12px;flex-wrap:wrap}
+  .nav-row .hint{font-size:13px;color:var(--n-500);font-weight:600}
+  .btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+  /* reflection */
+  .reflect{min-height:60vh;display:grid;place-items:center;text-align:center}
+  .reflect .card{background:#fff;border:2px solid var(--ink);border-radius:var(--r-lg);padding:44px 36px;box-shadow:10px 10px 0 var(--purple);max-width:640px;transform:rotate(-1deg)}
+  .reflect .card .e{color:var(--purple);display:grid;place-items:center}
+  .reflect .card p{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-top:14px}
+  .reflect .card p em{color:var(--purple);font-style:normal;border-bottom:4px solid var(--lime)}
+  .reflect .card .btn{margin-top:26px}
+  /* inputs */
+  .field{margin-top:20px}
+  .field label{display:block;font-weight:800;font-size:14px;margin-bottom:8px}
+  .field input,.field textarea{width:100%;font-family:inherit;font-size:16px;padding:14px 16px;border:2px solid var(--n-200);border-radius:14px;background:#fff;transition:border-color .15s}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--purple)}
+  .field small{display:block;margin-top:6px;color:var(--n-500);font-size:13px}
+  .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--n-600);margin-top:18px}
+  .check input{width:18px;height:18px;margin-top:2px;flex:none}
+  .check a{color:var(--purple);font-weight:700}
+  /* result */
+  .res-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+  .chip{background:#fff;border:2px solid var(--ink);border-radius:99px;padding:6px 12px;font-size:13px;font-weight:800}
+  .rec{margin-top:28px;background:var(--purple);color:#fff;border-radius:var(--r-lg);padding:32px;position:relative;overflow:hidden}
+  .rec .sp{position:absolute;right:-60px;top:-60px;width:260px;height:260px;background:rgba(255,255,255,.07)}
+  .rec .k{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--p-200)}
+  .rec h2{color:#fff;font-size:clamp(26px,3.6vw,38px);margin-top:8px}
+  .rec .why{margin-top:12px;color:var(--p-100);font-size:17px}
+  .rec .prog-line{margin-top:18px;font-size:13px;color:var(--p-200);font-family:'JetBrains Mono',monospace}
+  .rec .alt{margin-top:16px;font-size:14px;color:var(--p-200)}
+  .rec .alt b{color:#fff}
+  .stage{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:700px){.stage{grid-template-columns:1fr}}
+  .box{background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:24px;box-shadow:6px 6px 0 var(--ink)}
+  .box .k{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--n-500)}
+  .box h3{margin-top:8px;font-size:22px}
+  .box p{margin-top:8px;color:var(--n-600);font-size:15px}
+  .box ol{margin:12px 0 0 18px;color:var(--ink);font-size:15px}
+  .box ol li{margin-bottom:8px}
+  .box .badge{display:inline-block;background:var(--lime);border:2px solid var(--ink);border-radius:99px;padding:4px 12px;font-weight:800;font-size:13px;margin-top:6px}
+  .box .fine{font-size:12px;color:var(--n-500);margin-top:10px}
+  .gate{margin-top:36px;background:var(--amber-soft);border:2px dashed var(--ink);border-radius:var(--r-lg);padding:32px}
+  .gate h3{font-size:24px}
+  .gate p{color:var(--n-700);margin-top:8px}
+  .gate .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:600px){.gate .row2{grid-template-columns:1fr}}
+  .thanks{text-align:center;padding:40px 0}
+  .thanks .e{color:var(--purple);display:grid;place-items:center}
+  .thanks h1{margin-top:12px}
+  .thanks p{margin-top:12px;color:var(--n-600);font-size:17px;max-width:52ch;margin-inline:auto}
+  .thanks .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .gate .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+  /* result page */
+  .card2{background:#fff;border:1px solid var(--n-200);border-radius:22px;padding:24px;box-shadow:0 10px 30px rgba(77,18,136,.06)}
+  .card2 .k,.fit .k{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--n-500)}
+  .sumgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:16px;align-items:start}
+  @media(max-width:760px){.sumgrid{grid-template-columns:1fr}}
+  .sum{margin-top:10px}
+  .sum > div{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--n-100)}
+  .sum > div:last-child{border-bottom:0;padding-bottom:0}
+  .sum dt{font-size:13px;font-weight:600;color:var(--n-500)}
+  .sum dd{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.45}
+  @media(max-width:480px){.sum > div{grid-template-columns:1fr;gap:2px}}
+  .str{list-style:none;margin-top:12px;display:grid;gap:12px}
+  .str li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;font-weight:600;line-height:1.4}
+  .str svg{color:var(--teal);margin-top:1px;flex:none}
+  .gaps-sub{font-size:15px;color:var(--n-600);margin-top:8px;line-height:1.5}
+  .gapgrid{display:grid;gap:16px;margin-top:16px}
+  .sumcol{display:grid;gap:16px;align-content:start}
+  .sumgrid{align-items:stretch}
+  .earn{flex:1}
+  .work{margin-top:16px}
+  .earn{background:var(--lime);border-color:transparent;box-shadow:none}
+  .earn .k{color:var(--n-700)}
+  .earn b{display:block;font-size:clamp(26px,3.3vw,36px);letter-spacing:-.04em;line-height:1;margin-top:10px;white-space:nowrap}
+  .earn span{display:block;font-weight:700;font-size:15px;margin-top:6px}
+  .earn p{font-size:14.5px;color:var(--n-700);margin-top:12px;line-height:1.5}
+  .earn small{display:block;font-size:12px;color:var(--n-600);margin-top:10px}
+  .str.two{grid-template-columns:repeat(3,1fr);gap:12px 20px}
+  @media(max-width:700px){.str.two{grid-template-columns:1fr}}
+  .gap{display:flex;gap:10px;align-items:flex-start}
+  .gap-ic{color:#D64545;display:grid;place-items:center;flex:none;margin-top:3px}
+  .gap b{display:block;font-size:15.5px;line-height:1.3}
+  .gap p{font-size:14px;color:var(--n-600);line-height:1.45;margin-top:2px}
+  .fit{margin-top:16px;background:var(--p-50);border-radius:var(--r-lg);padding:32px}
+  .fit h2{font-size:clamp(22px,3vw,30px);margin-top:10px;line-height:1.15}
+  .fit-push{margin-top:10px;font-size:15.5px;line-height:1.5;color:var(--n-700);max-width:62ch}
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+  @media(max-width:760px){.trio{grid-template-columns:1fr}}
+  .trio-c{background:#fff;border:1px solid var(--p-100);border-radius:18px;padding:18px;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+  .trio-c small{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--n-500);margin-top:6px}
+  .trio-c b{font-size:18px;line-height:1.2;margin-top:6px}
+  .trio-c p{font-size:14px;color:var(--n-600);line-height:1.5;margin-bottom:12px}
+  .trio-c .btn{margin-top:auto}
+  .st{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--n-700)}
+  .st i{width:7px;height:7px;border-radius:50%;background:#22A06B}
+  .st.wl{color:var(--n-500)}
+  .fit-talk{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid var(--p-200)}
+  .fit-talk span{font-weight:700;font-size:16px}
+  @media(max-width:480px){.fit-talk .btn{width:100%;justify-content:center}}
+  .fit-dbg{font-size:12px;color:var(--n-400);margin-top:16px}
+  .wa-ic{flex:none}
+  .wa{background:#25D366;color:#fff}
+  svg.ic{vertical-align:-.15em;flex:none}
+  .rec h2 svg,.box h3 svg{vertical-align:-.12em;margin-right:4px}
+</style>
+</head>
+<body>
+<div class="top"><button class="icon-btn" id="topBack" aria-label="Back" style="visibility:hidden"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button><a href="index.html" aria-label="LeepX home"><img src="assets/logo-primary.png" alt="LeepX" style="height:22px" /></a><a class="icon-btn" id="closeBtn" href="index.html" aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></a></div>
+<div class="prog"><div class="bar"><i id="bar"></i></div><small id="progTxt">Getting started</small></div>
+<main id="app"></main>
+
+<script src="js/config.js"></script>
+<script src="js/track.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/leepx-logic.js"></script>
+<script>
+(function(){
+  const {QUESTIONS:Q, REFLECT, TRACKS, score, submitLead, send, CONFIG} = window.LeepX;
+  const app=document.getElementById('app'), bar=document.getElementById('bar'), progTxt=document.getElementById('progTxt');
+  const A = {};            // answers
+  let idx = 0;             // question index
+  const TOTAL = Q.length + 2; // + optional + result
+  const BLOCK_LABEL={A:"What's going on",B:'About you',C:'Where you want to go',D:'What you can put in'};
+  const params=new URLSearchParams(location.search); const utm={}; for(const [k,v] of params){ if(k.startsWith('utm_')) utm[k]=v; }
+
+  const C={name:'',email:'',phone:'',cc:'+91',local:''};
+  /* ---------- spreadsheet rows (readable text, one column per question) ---------- */
+  const SID=(()=>{ try{ let v=sessionStorage.getItem('lx_sid'); if(!v){ v='s_'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); sessionStorage.setItem('lx_sid',v); } return v; }catch(e){ return 's_'+Date.now().toString(36); } })();
+  const STARTED=new Date();
+  const when=d=>d.toLocaleString('en-IN',{timeZone:'Asia/Kolkata',dateStyle:'medium',timeStyle:'short'});
+  const COLS={situation:'Right now',blockers:'Where they get stuck',experience:'Experience',industry:'Industries',roles_done:'Work done',tools:'Tools',income:'Earning today',dream_income:'Income goal',leap:'Change they want',roles_interest:'Cohorts of interest',intl:'International exposure',interviews:'Interviews',hours:'Hours per week',budget:'Budget'};
+  const readable=qid=>{ const q=Q.find(x=>x.id===qid), v=A[qid]; if(v==null) return ''; const lab=k=>{const o=q.options.find(o=>o[0]===k);return o?o[2]:k;};
+    return (Array.isArray(v)?v.map(lab):[lab(v)]).concat(Array.isArray(A[qid+'_other'])?A[qid+'_other']:[]).join(', '); };
+  const answerCols=()=>{ const r={}; Q.forEach(q=>{ r[COLS[q.id]||q.id]=readable(q.id); }); r['LinkedIn']=A.linkedin||''; r['Ideal Tuesday']=A.dream_text||''; return r; };
+  const cameFrom=()=>Object.keys(utm).length?Object.entries(utm).map(([k,v])=>k.replace('utm_','')+': '+v).join(' · '):(document.referrer||'Direct');
+  function saveProgress(stepLabel,finished){
+    if(!CONFIG.LEAD_ENDPOINT) return;
+    send('progress',Object.assign({'Session ID':SID,'Started at':when(STARTED),'Last updated':when(new Date()),'Last step reached':stepLabel,'Finished':finished?'Yes':'No','Name':C.name,'Email':C.email,'WhatsApp':C.phone,'Came from':cameFrom()},answerCols()));
+  }
+
+  let screen='q';
+  const topBack=document.getElementById('topBack');
+  function setBack(show){ topBack.style.visibility=show?'visible':'hidden'; }
+  topBack.addEventListener('click',()=>{
+    if(screen==='q'){ if(idx>0){idx--;renderQ();} }
+    else if(screen==='reflect'){ renderQ(); }
+    else if(screen==='optional'){ idx=Q.length-1; renderQ(); }
+    else if(screen==='gate'){ renderOptional(); }
+  });
+  function setProg(n,label){ bar.style.width=Math.round(n/TOTAL*100)+'%'; progTxt.textContent=label; }
+  const usd=n=>'$'+Number(n).toLocaleString('en-US');
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  /* ---------- question screen ---------- */
+  function renderQ(){
+    const q=Q[idx]; screen='q'; setBack(idx>0); setProg(idx, `${BLOCK_LABEL[q.block]} · ${idx+1} of ${Q.length}`);
+    if(q.layout==='picker') return renderPicker(q);
+    const multi=q.type==='multi';
+    const cur = A[q.id] ?? (multi?[]:null);
+    const isOn=v=>multi?cur.includes(v):cur===v;
+    app.innerHTML = `<div class="screen">
+      <h1>${q.title}</h1>${q.sub?`<p class="sub">${q.sub}</p>`:''}
+      <div class="opts" id="opts">${q.options.map(o=>`<button class="opt ${isOn(o[0])?'on':''}" data-v="${o[0]}"><span class="e">${LX.icon(o[1],22)}</span><span class="t">${esc(o[2])}${o[3]?`<small>${esc(o[3])}</small>`:''}</span></button>`).join('')}</div>
+      <div class="nav-row">
+        <span class="hint">${multi?(q.max?`Pick up to ${q.max}`:'Pick all that apply'):'Tap one to continue'}</span>
+        <button class="btn btn-primary btn-sm" id="next" ${multi&&!cur.length?'disabled':''}>Continue →</button>
+      </div></div>`;
+    const opts=app.querySelectorAll('.opt'), nextBtn=document.getElementById('next');
+    opts.forEach(b=>b.addEventListener('click',()=>{
+      const v=b.dataset.v;
+      if(!multi){ A[q.id]=v; opts.forEach(x=>x.classList.toggle('on',x===b)); setTimeout(next,220); }
+      else{
+        let arr=A[q.id]||[];
+        if(v==='none'||v==='unsure'){ arr=arr.includes(v)?[]:[v]; }
+        else { arr=arr.filter(x=>x!=='none'&&x!=='unsure'); arr=arr.includes(v)?arr.filter(x=>x!==v):[...arr,v]; if(q.max&&arr.length>q.max) arr=arr.slice(-q.max); }
+        A[q.id]=arr; opts.forEach(x=>x.classList.toggle('on',arr.includes(x.dataset.v))); nextBtn.disabled=!arr.length;
+      }
+    }));
+    nextBtn.addEventListener('click',()=>{ if(multi&&!(A[q.id]||[]).length) return; next(); });
+  }
+
+  /* ---------- picker: long categorised lists (industries, work, tools) ---------- */
+  function renderPicker(q){
+    const OK=q.id+'_other';
+    if(!Array.isArray(A[q.id])) A[q.id]=[];
+    if(!Array.isArray(A[OK])) A[OK]=A[OK]?[String(A[OK])]:[];
+    const noneKey=q.none?q.none[0]:null;
+    const label=Object.fromEntries(q.options.map(o=>[o[0],o[2]]));
+    const real=q.options.filter(o=>o[0]!==noneKey);
+    let g=0, query='';
+    app.innerHTML=`<div class="screen">
+      <h1>${q.title}</h1>${q.sub?`<p class="sub">${q.sub}</p>`:''}
+      <div class="picker" id="picker">
+        <label class="pk-search">${LX.icon('search',18)}<input id="pkq" type="search" placeholder="Search ${real.length} ${q.noun}" autocomplete="off"/></label>
+        <div class="pk-tray" id="pkt"></div>
+        <div class="pk-main"><nav class="pk-tabs" id="pktabs" aria-label="Categories"></nav><div class="pk-grid" id="pkgrid"></div></div>
+        <div class="pk-foot">
+          <div class="pk-add"><input id="other" placeholder="Can't find it? Type it here" autocomplete="off"/><button class="btn btn-ghost btn-sm" id="addOther" type="button">Add</button></div>
+          ${q.none?`<button class="pk-none" id="pknone" type="button"><span class="ck">${LX.icon('check',13)}</span>${esc(q.none[1])}</button>`:''}
+        </div>
+      </div>
+      <div class="nav-row"><span class="hint" id="pkhint"></span><button class="btn btn-primary btn-sm" id="next">Continue →</button></div></div>`;
+    const $=id=>document.getElementById(id);
+    const item=o=>`<button type="button" class="pk ${A[q.id].includes(o[0])?'on':''}" data-v="${o[0]}"><span class="ck">${LX.icon('check',13)}</span><span>${esc(o[2])}</span></button>`;
+    function paint(){
+      const sel=A[q.id], isNone=sel.includes(noneKey), picked=sel.filter(v=>v!==noneKey);
+      $('pktabs').innerHTML=q.groups.map((gr,i)=>{const n=gr.options.filter(o=>sel.includes(o[0])).length;return `<button type="button" class="pk-tab ${!query&&i===g?'on':''}" data-g="${i}"><span>${esc(gr.label)}</span>${n?`<b>${n}</b>`:''}</button>`;}).join('');
+      const list=query?real.filter(o=>o[2].toLowerCase().includes(query)):q.groups[g].options;
+      $('pkgrid').innerHTML=list.length?list.map(item).join(''):`<p class="pk-empty">Nothing matches “${esc(query)}”. Add it using the box below.</p>`;
+      $('pkt').innerHTML=picked.map(v=>`<span class="pk-chip">${esc(label[v]||v)}<button type="button" data-rm="${v}" aria-label="Remove">×</button></span>`).join('')+A[OK].map((t,i)=>`<span class="pk-chip">${esc(t)}<button type="button" data-rmo="${i}" aria-label="Remove">×</button></span>`).join('');
+      const n=picked.length+A[OK].length;
+      $('pkhint').textContent=isNone?q.none[1]:n?`${n} selected`:'Pick all that apply';
+      if($('pknone')) $('pknone').classList.toggle('on',isNone);
+      $('next').disabled=!(n||isNone);
+    }
+    $('picker').addEventListener('click',e=>{
+      const t=e.target.closest('[data-v],[data-g],[data-rm],[data-rmo]'); if(!t) return;
+      if(t.dataset.g!=null){ g=+t.dataset.g; query=''; $('pkq').value=''; }
+      else if(t.dataset.v){ const v=t.dataset.v; let arr=A[q.id].filter(x=>x!==noneKey); A[q.id]=arr.includes(v)?arr.filter(x=>x!==v):[...arr,v]; }
+      else if(t.dataset.rm){ A[q.id]=A[q.id].filter(x=>x!==t.dataset.rm); }
+      else if(t.dataset.rmo!=null){ A[OK].splice(+t.dataset.rmo,1); }
+      paint();
+    });
+    $('pkq').addEventListener('input',e=>{ query=e.target.value.trim().toLowerCase(); paint(); });
+    function addOther(){ const v=$('other').value.trim(); if(!v) return; if(!A[OK].some(x=>x.toLowerCase()===v.toLowerCase())) A[OK].push(v); A[q.id]=A[q.id].filter(x=>x!==noneKey); $('other').value=''; paint(); }
+    $('addOther').addEventListener('click',addOther);
+    $('other').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); addOther(); } });
+    if($('pknone')) $('pknone').addEventListener('click',()=>{ const on=A[q.id].includes(noneKey); A[q.id]=on?[]:[noneKey]; if(!on) A[OK]=[]; paint(); });
+    $('next').addEventListener('click',()=>{ addOther(); if(!$('next').disabled) next(); });
+    paint();
+  }
+
+  /* ---------- reflections ---------- */
+  function reflectionFor(q){
+    if(q.id==='blockers'){ const b=(A.blockers||[])[0]; return b&&REFLECT[b]?{e:'ear',t:REFLECT[b]}:null; }
+    if(q.id==='situation'){ if(A.situation==='break')return{e:'sprout',t:REFLECT.break}; if(A.situation==='unemployed')return{e:'handshake',t:REFLECT.unemployed}; return null; }
+    if(q.id==='dream_income'){ const s=score(A); if(s.incomeGap>0) return {e:'target',t:`So we're talking about a <em>${usd(s.incomeGap)}/month</em> jump. Noted. Let's see what gets you there fastest.`}; return null; }
+    if(q.id==='intl'&&A.intl==='no') return {e:'globe',t:REFLECT.intl_no};
+    return null;
+  }
+  function renderReflect(r,then){
+    screen='reflect'; setBack(true);
+    app.innerHTML=`<div class="screen reflect"><div class="card"><div class="e">${LX.icon(r.e,44)}</div><p>${r.t}</p><button class="btn btn-dark" id="go">Okay, go on →</button></div></div>`;
+    document.getElementById('go').addEventListener('click',then);
+  }
+  function next(){
+    const q=Q[idx]; const r=reflectionFor(q);
+    saveProgress(`Question ${idx+1} of ${Q.length} answered`); lxTrack(idx===0?'assessment_start':'assessment_step',{step:idx+1,question:q.id});
+    const go=()=>{ idx++; if(idx<Q.length) renderQ(); else renderOptional(); };
+    if(r) renderReflect(r,go); else go();
+  }
+
+  /* ---------- optional ---------- */
+  function renderOptional(){
+    screen='optional'; setBack(true); setProg(Q.length,'Almost there · optional');
+    app.innerHTML=`<div class="screen">
+      <span class="sticker lime">${LX.icon("gift",14)} Optional, but it makes your assessment 10x more personal</span>
+      <h1 style="margin-top:18px">Two more things, if you feel like it.</h1>
+      <div class="field"><label>Your LinkedIn (we'll look at it while writing your assessment)</label><input id="li" type="url" placeholder="linkedin.com/in/you" value="${esc(A.linkedin||'')}"/></div>
+      <div class="field"><label>A year from now, what does your ideal Tuesday look like?</label><textarea id="dream" rows="3" placeholder="e.g. Wake up without an alarm, two client calls, gym at 4, dinner with family, $1,000 in the account…">${esc(A.dream_text||'')}</textarea><small>We quote this back to you. It's surprisingly powerful.</small></div>
+      <div class="nav-row"><span></span><button class="btn btn-primary" id="next">Continue →</button></div></div>`;
+    document.getElementById('next').addEventListener('click',()=>{A.linkedin=document.getElementById('li').value.trim();A.dream_text=document.getElementById('dream').value.trim();renderGate();});
+  }
+
+  /* ---------- contact gate (result is shown after this) ---------- */
+  function renderGate(){
+    screen='gate'; setBack(true); setProg(Q.length+1,'Last step'); saveProgress('Reached contact details'); lxTrack('assessment_contact_shown');
+    app.innerHTML=`<div class="screen">
+      <span class="sticker amber">${LX.icon("circle-check",14)} Your summary is ready</span>
+      <h1 style="margin-top:18px">Where should we send it?</h1>
+      <p class="sub">You'll see your summary on the next screen. A detailed version goes to your email.</p>
+      <div class="gate" style="margin-top:28px">
+        <div class="row2"><div class="field"><label>First name</label><input id="name" autocomplete="given-name" placeholder="Your name" value="${esc(C.name)}"/></div><div class="field"><label>Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com" value="${esc(C.email)}"/></div></div>
+        <div class="field"><label>WhatsApp number</label><div class="phone-row"><select id="cc" aria-label="Country code"><option value="+91">+91 India</option><option value="+971">+971 UAE</option><option value="+1">+1 US / Canada</option><option value="+44">+44 UK</option><option value="+65">+65 Singapore</option><option value="+61">+61 Australia</option><option value="+966">+966 Saudi Arabia</option><option value="+974">+974 Qatar</option><option value="+968">+968 Oman</option><option value="+965">+965 Kuwait</option><option value="+973">+973 Bahrain</option><option value="+49">+49 Germany</option><option value="+33">+33 France</option><option value="+31">+31 Netherlands</option><option value="+353">+353 Ireland</option><option value="+60">+60 Malaysia</option><option value="+977">+977 Nepal</option><option value="+880">+880 Bangladesh</option><option value="+94">+94 Sri Lanka</option><option value="+92">+92 Pakistan</option><option value="+27">+27 South Africa</option><option value="+234">+234 Nigeria</option><option value="+254">+254 Kenya</option><option value="+64">+64 New Zealand</option></select><input id="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210" value="${esc(C.local)}"/></div><small>A human on our team sends your result and answers questions here. No drip campaigns.</small></div>
+        <label class="check"><input type="checkbox" id="consent" checked/> <span>Send me my summary and follow-ups on email and WhatsApp. I can opt out anytime. I agree to the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms.html" target="_blank" rel="noopener">Terms</a>.</span></label>
+        <div class="nav-row"><span class="hint" id="err" style="color:var(--coral)"></span><button class="btn btn-primary" id="send">Show my summary →</button></div>
+      </div></div>`;
+    document.getElementById('cc').value=C.cc;
+    document.getElementById('send').addEventListener('click',submit);
+    window.scrollTo({top:0});
+  }
+
+  async function submit(){
+    C.name=document.getElementById('name').value.trim(); C.email=document.getElementById('email').value.trim(); C.cc=document.getElementById('cc').value; C.local=document.getElementById('phone').value.trim(); const digits=C.local.replace(/\D/g,'').replace(/^0+/,''); C.phone=C.cc+' '+digits;
+    const err=document.getElementById('err');
+    if(!C.name){err.textContent='Your name, please.';return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(C.email)){err.textContent='That email does not look right.';return;}
+    if(digits.length<7||digits.length>12){err.textContent='Please add a valid WhatsApp number.';return;}
+    if(!document.getElementById('consent').checked){err.textContent='Tick the box so we can send your result.';return;}
+    const btn=document.getElementById('send'); btn.disabled=true; btn.textContent='Preparing your summary…';
+    const s=score(A);
+    const payload={lead_id:'lx_'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),created_at:new Date().toISOString(),source:utm,page:location.href,...A,cohort_interest:A.roles_interest||[],name:C.name,email:C.email,phone:C.phone,phone_country_code:C.cc,consent:true,
+      cohort_recommended:['launchpad','linkedin',fitCohort(s).key],track_primary:s.primary,track_secondary:s.secondary,track_scores:s.trackScores,readiness:s.readiness,stage:s.stage,intent:s.intent,fit:s.fit,tier:s.tier,clarity_call:s.clarityCall,income_gap_usd:s.incomeGap};
+    const co=fitCohort(s);
+    const row=Object.assign({'Submitted at':when(new Date()),'Name':C.name,'Email':C.email,'WhatsApp':C.phone,'Lead rating':s.tier,'Level':s.stage,'Recommended programs':['Remote Launchpad','Attract inbound via LinkedIn',co.name].join(', ')},answerCols(),{'Came from':cameFrom(),'Lead ID':payload.lead_id,'Session ID':SID});
+    await submitLead(payload,row);
+    saveProgress('Finished: saw summary',true); lxTrack('assessment_completed',{rating:s.tier,program:co.key});
+    renderResult();
+  }
+
+  /* ---------- result: a summary of what they told us + earning potential + encouragement ---------- */
+  const STAGE={
+    Explorer:{e:'sprout',head:'You are at the start, and that is a good place to be.',msg:'You have no bad habits to unlearn and a clear reason to begin. Learners who started exactly here in our first cohort were pitching real brands by graduation.'},
+    Builder:{e:'trending-up',head:'You already have real skills. You are closer than it feels.',msg:'What is missing is proof and a push, and that is the quickest gap to close. With the right structure and a mentor beside you, this can move fast.'},
+    Launcher:{e:'rocket',head:'You are almost there. You have what most people are still building.',msg:'The experience and the tools are already yours. What you need now is sharp positioning and the right doors, and that is exactly what we do.'}};
+  const COHORTS={
+    launchpad:{name:'Remote Launchpad',live:true,line:'Role clarity, remote-work tools, a complete portfolio, CV and your first applications.'},
+    linkedin:{name:'Attract inbound via LinkedIn',live:true,line:'Positioning, a content system, networking and outreach, so opportunities come to you.'},
+    smm:{name:'Become a Social Media Manager',live:true,line:'Strategy, content, analytics and a portfolio built on a real brand.'},
+    va:{name:'Become a Virtual Assistant',live:true,line:'12 weeks. Inboxes, calendars and operations for founders abroad, with a first paid trial.'},
+    pm:{name:'Become an AI-powered Project Manager',live:true,line:'16 weeks. Scoping, agile delivery, a specialised track and a capstone portfolio, with AI tools throughout.'},
+    freelance:{name:'Scale your freelancing career',live:false,line:'Better clients, higher rates and steady monthly income.'}};
+  // Remote Launchpad and LinkedIn are recommended to everyone. This picks the third program from their answers.
+  function fitCohort(s){
+    const third=['smm','va','pm','freelance'];
+    const picked=(A.roles_interest||[]).filter(k=>third.includes(k));
+    let key=s.primary;
+    if(picked.length&&!picked.includes(s.primary)){
+      const scored=picked.filter(k=>s.trackScores[k]!=null).sort((x,y)=>s.trackScores[y]-s.trackScores[x]);
+      key=scored[0]||picked[0];
+    }
+    if(!third.includes(key)) key='smm';
+    return {key,chosen:picked.includes(key),...COHORTS[key]};
+  }
+  // "What you are missing": gaps read from their answers. Names the gap and the program that covers it, never the how.
+  function gapsFor(s){
+    const b=A.blockers||[], leap=Array.isArray(A.leap)?A.leap:[A.leap], g=[], add=(k,p,t,d)=>{ if(!g.some(x=>x.k===k)) g.push({k,p,t,d}); };
+    if(b.includes('no_direction')||s.directionGap) add('clarity','launchpad','Role clarity','Which role fits you, and why');
+    if(b.includes('no_skills')) add('path','third','A skill path','What to learn, and in what order');
+    if(b.includes('no_portfolio')) add('proof','third','Proof of work','A portfolio people can check');
+    if(b.includes('no_interviews')||A.interviews==='applied_no_calls') add('positioning','linkedin','Positioning','A CV and LinkedIn that get replies');
+    if(b.includes('no_where')||A.interviews==='none_applied') add('apply','launchpad','An application strategy','Where to apply and how to stand out');
+    if(b.includes('fail_interviews')||A.interviews==='some_calls') add('interview','launchpad','An interview framework','Turning final rounds into offers');
+    if(b.includes('no_clients')||leap.some(l=>['job_to_freelance','side_income'].includes(l))) add('clients','third','A client system','Finding, pitching and pricing clients');
+    if(['no','yes_unpaid'].includes(A.intl)) add('global','launchpad','Global exposure','Approaching international companies');
+    if(b.includes('no_time')) add('plan','launchpad','A weekly plan','A schedule that fits your life');
+    add('outreach','linkedin','Outreach','Messages that get answered');
+    add('network','linkedin','Networking','Who to talk to, and what to say');
+    add('positioning','linkedin','Positioning','A CV and LinkedIn that get replies');
+    add('framework','launchpad','A step-by-step framework','One clear path, with a mentor');
+    return g.slice(0,5);
+  }
+  const optLabel=(qid,k)=>{const o=Q.find(q=>q.id===qid).options.find(o=>o[0]===k);return o?o[2]:k;};
+  const listOf=(qid,max=4)=>{const v=A[qid];const arr=(Array.isArray(v)?v:(v?[v]:[])).filter(k=>k!=='none'&&k!=='unsure').map(k=>optLabel(qid,k)).concat(Array.isArray(A[qid+'_other'])?A[qid+'_other']:[]);
+    if(!arr.length) return '';return arr.slice(0,max).join(', ')+(arr.length>max?` +${arr.length-max} more`:'');};
+  const countOf=qid=>{const v=A[qid];return (Array.isArray(v)?v.filter(k=>k!=='none'&&k!=='unsure').length:0)+(Array.isArray(A[qid+'_other'])?A[qid+'_other'].length:0);};
+
+  function renderResult(){
+    const s=score(A); screen='result'; setBack(false); setProg(TOTAL,'Your summary');
+    const st=STAGE[s.stage], co=fitCohort(s), name=esc(C.name), T=TRACKS[s.primary];
+    // "How much you can earn": 60% above the income range they chose. No income yet -> the path's starting range.
+    const NOW={lt15:[0,200],'15_30':[200,400],'30_50':[400,600],'50_80':[600,1000],'80_150':[1000,1800],'150p':[1800,null]}[A.income];
+    const up=n=>Math.round(n*1.6/10)*10;
+    const [band,when]=T.income[s.stage].split(' within ');
+    let earn, earnHi, basis;
+    if(NOW){ earnHi=NOW[1]?up(NOW[1]):null;
+      earn=NOW[1]===null?`${usd(up(NOW[0]))}+`:NOW[0]===0?`Up to ${usd(earnHi)}`:`${usd(up(NOW[0]))}–${earnHi.toLocaleString('en-US')}`;
+      basis='A realistic next step from where you are today.'; }
+    else { earn=band.replace('/month',''); earnHi=parseInt((earn.match(/[\d,]+/g)||['0']).pop().replace(/,/g,''),10); basis='A realistic first step on this path.'; }
+    const goalLine=!A.dream_income?'':(earnHi===null||s.incomeGoal<=earnHi)?`Your goal of ${usd(s.incomeGoal)} is within reach.`:`Your goal of ${usd(s.incomeGoal)} comes after that.`;
+    const rows=[
+      ['Right now',A.situation&&optLabel('situation',A.situation)],
+      ['Experience',A.experience&&optLabel('experience',A.experience)+(['0','lt1'].includes(A.experience)?'':' years')],
+      ['Industries',listOf('industry',3)],
+      ['Work you have done',listOf('roles_done',4)],
+      ['Tools you know',countOf('tools')?`${countOf('tools')} tools: ${listOf('tools',4)}`:''],
+      ['Where you get stuck',listOf('blockers',3)],
+      ['The change you want',listOf('leap',3)],
+      ['Cohorts that caught your eye',listOf('roles_interest',3)],
+      ['Earning today',A.income&&optLabel('income',A.income)+(A.income==='0'?'':' a month')],
+      ['Your goal',A.dream_income&&optLabel('dream_income',A.dream_income)+' a month'],
+      ['Time you can give',A.hours&&optLabel('hours',A.hours)+' hours a week'],
+    ].filter(r=>r[1]);
+    const strengths=[];
+    if(s.exp>=1) strengths.push('Real work experience behind you');
+    if(countOf('tools')>=3) strengths.push(`${countOf('tools')} tools you already use`);
+    if(countOf('roles_done')>=2) strengths.push(`Hands-on work across ${countOf('roles_done')} areas`);
+    if(['yes_paid','via_indian'].includes(A.intl)) strengths.push('Experience with international clients');
+    if(['some_calls','offers'].includes(A.interviews)) strengths.push('You already get interview calls');
+    if((A.blockers||[]).includes('no_where')) strengths.push('You know your role, tools and skills');
+    if(['6_10','10p'].includes(A.hours)) strengths.push('Real time to commit every week');
+    strengths.push('A clear goal in mind');
+    const gaps=gapsFor(s);
+    const progs=[{key:'launchpad',...COHORTS.launchpad},{key:'linkedin',...COHORTS.linkedin},{...co}].sort((x,y)=>(y.live?1:0)-(x.live?1:0)); // live cohorts first, waitlist last
+    const joinBtn=c=>c.live
+      ?`<a class="btn btn-primary btn-sm" href="${CONFIG.CHECKOUT[c.key]||'#join'}" target="_blank" rel="noopener">Join the cohort →</a>`
+      :`<a class="btn btn-ghost btn-sm" href="${CONFIG.WAITLIST_URL||CONFIG.wa('Hi LeepX, please add me to the waitlist for '+c.name+'.')}" target="_blank" rel="noopener">Join the waitlist →</a>`;
+    const push={
+      hot:`You are ready, and your answers show it. Join now to hold your seat, or message our team and we will walk you through all three.`,
+      warm:`You have more going for you than most people who start. Join now, or message our team and see how these three programs work together for you.`,
+      nurture:`You have a real starting point. When you are ready to move, these three programs are where we would begin with you.`,
+      redirect:`Every strong career switch starts with knowing where you stand, and now you do. When your time or budget opens up, these three programs are where we would begin with you.`}[s.tier];
+    app.innerHTML=`<div class="screen">
+      <div class="res-head"><span class="sticker amber">${LX.icon("pen-line",14)} Based on your 14 answers</span></div>
+      <h1 style="margin-top:18px">${name?name+', here':'Here'} is your summary.</h1>
+      ${C.email?`<p class="sub">${LX.icon("mail-check",16)} A detailed version is on its way to <b>${esc(C.email)}</b>.</p>`:''}
+      <div class="rec">
+        <div class="k">Where you stand</div>
+        <h2>${LX.icon(st.e,30)} ${st.head}</h2>
+        <p class="why">${st.msg}</p>
+      </div>
+      <div class="sumgrid">
+        <div class="card2"><div class="k">What you told us</div>
+          <dl class="sum">${rows.map(r=>`<div><dt>${r[0]}</dt><dd>${esc(r[1])}</dd></div>`).join('')}</dl>
+        </div>
+        <div class="sumcol">
+          <div class="card2 gaps"><div class="k">What you are missing</div>
+            <p class="gaps-sub">The gaps between where you are and where you want to be.</p>
+            <div class="gapgrid">${gaps.map(x=>`<div class="gap"><span class="gap-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><div><b>${x.t}</b><p>${x.d}</p></div></div>`).join('')}</div>
+          </div>
+          <div class="card2 earn"><div class="k">How much you can earn</div><b>${earn}</b><span>a month</span><p>${basis} ${goalLine}</p><small>An estimate, not a guarantee.</small></div>
+        </div>
+      </div>
+      <div class="card2 work"><div class="k">What is already working for you</div><ul class="str two">${strengths.slice(0,6).map(x=>`<li>${LX.icon('circle-check',18)}<span>${x}</span></li>`).join('')}</ul></div>
+      <div class="fit">
+        <div class="k">Your recommended programs</div>
+        <h2>Three programs, picked for your profile.</h2>
+        <p class="fit-push">${push}</p>
+        <div class="trio">${progs.map(c=>`<div class="trio-c">
+            <span class="st ${c.live?'':'wl'}">${c.live?'<i></i> Live · enrolling now':LX.icon('clock',12)+' Waitlist open'}</span>
+            <b>${c.name}</b><p>${c.line}</p>${joinBtn(c)}
+          </div>`).join('')}</div>
+        ${A.budget==='0'&&CONFIG.COMMUNITY_URL?`<div class="fit-talk"><span>Want to start for free?</span><a class="btn btn-dark btn-sm" href="${CONFIG.COMMUNITY_URL}" target="_blank" rel="noopener" onclick="window.lxTrack&&lxTrack('join_free_community')">Join the Free Community →</a></div>`:`<div class="fit-talk"><span>Questions before you join?</span><a class="btn wa btn-sm" href="${CONFIG.wa('Hi LeepX, I just took the assessment and have a question.')}" target="_blank" rel="noopener"><svg class="wa-ic" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> Talk to our team on WhatsApp</a></div>`}
+        ${CONFIG.LEAD_ENDPOINT?'':`<p class="fit-dbg">Preview mode: lead ${s.tier} · ${s.stage} · launchpad + linkedin + ${co.key} · stored in this browser only (no endpoint configured).</p>`}
+      </div></div>`;
+    window.scrollTo({top:0});
+  }
+
+  // Test/preview hook: assess.html?a=<urlencoded JSON answers> jumps straight to the result. Debug only.
+  const pre=params.get('a'); if(pre&&['localhost','127.0.0.1'].includes(location.hostname)){ try{ Object.assign(A, JSON.parse(decodeURIComponent(pre))); renderResult(); return; }catch(e){ console.warn('bad preload',e); } }
+  renderQ();
+})();
+</script>
+</body>
+</html>

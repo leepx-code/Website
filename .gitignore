@@ -1,0 +1,19 @@
+# Only the website lives in this repo. Everything else on the Mac stays local.
+/*
+!/.gitignore
+!/.github/
+!/CLAUDE.md
+!/HOW-TO-EDIT.md
+!/README.md
+!/site/
+!/tools/
+!/docs/
+
+# inside site/: old drafts and the single-file bundle builder output
+site/index.v1-story.html
+site/index.v2-plan.html
+site/_bundle-test.html
+site/assets/logos/_test/
+
+.DS_Store
+__pycache__/

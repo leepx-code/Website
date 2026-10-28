@@ -1,0 +1,18 @@
+# Clean URLs: /page serves page.html, and /page.html redirects to /page
+/index.html   /   301!
+/remote-launchpad.html   /remote-launchpad   301!
+/remote-launchpad        /remote-launchpad.html   200
+/social-media-manager.html   /social-media-manager   301!
+/social-media-manager        /social-media-manager.html   200
+/virtual-assistant.html   /virtual-assistant   301!
+/virtual-assistant        /virtual-assistant.html   200
+/ai-project-manager.html   /ai-project-manager   301!
+/ai-project-manager        /ai-project-manager.html   200
+/masterclass.html   /masterclass   301!
+/masterclass        /masterclass.html   200
+/assess.html   /assess   301!
+/assess        /assess.html   200
+/privacy.html   /privacy   301!
+/privacy        /privacy.html   200
+/terms.html   /terms   301!
+/terms        /terms.html   200
