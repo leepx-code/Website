@@ -108,8 +108,8 @@ PAGE = """<!DOCTYPE html>
 <body data-page="{slug}">
 <header class="ctop">
   <div class="in">
-    <a class="back" href="index.html#outcomes">{back_ic}<span>Back to all cohorts</span></a>
-    <a class="logo" href="index.html" aria-label="LeepX home"><img src="assets/logo-primary.png" alt="LeepX" /></a>
+    <a class="back" href="./#outcomes">{back_ic}<span>Back to all cohorts</span></a>
+    <a class="logo" href="./" aria-label="LeepX home"><img src="assets/logo-primary.png" alt="LeepX" /></a>
     <a class="btn btn-primary btn-sm nav-enrol" href="{cta_href}"{cta_attrs}>{cta_short}</a>
   </div>
 </header>
@@ -126,7 +126,7 @@ PAGE = """<!DOCTYPE html>
   </div>
 </section>
 
-<div class="cfoot"><span>© 2026 LeepX · Job-ready, not job-guaranteed.</span><span><a href="index.html">Home</a><a href="assess.html">Free assessment</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></span></div>
+<div class="cfoot"><span>© 2026 LeepX · Job-ready, not job-guaranteed.</span><span><a href="./">Home</a><a href="assess">Free assessment</a><a href="terms">Terms</a><a href="privacy">Privacy</a></span></div>
 <div class="mcta"><small>{mcta_small}</small><a class="btn btn-primary btn-sm" href="{cta_href}"{cta_attrs}>{cta_short}</a></div>
 
 <script src="js/config.js"></script>
@@ -148,7 +148,7 @@ PAGE = """<!DOCTYPE html>
 """
 
 BACK = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>'
-ASSESS = '<a href="assess.html" style="color:var(--purple);font-weight:700">Take the free 3-minute assessment</a>'
+ASSESS = '<a href="assess" style="color:var(--purple);font-weight:700">Take the free 3-minute assessment</a>'
 
 # ===================================================================== REMOTE LAUNCHPAD
 LP_SEAT = 'https://academy.theleepx.com/web/checkout/6a9aa91e3e4aa855e2067682?purchaseNow=true'
@@ -335,7 +335,7 @@ launchpad_body = f"""
 
 <section class="sec soft" id="faq">
   <div class="wrap">
-    <div class="head c"><span class="eyebrow">Before you ask</span><h2>Questions about the Launchpad.</h2><p>General questions about LeepX, refunds and payments are answered on the <a href="index.html#faq" style="color:var(--purple);font-weight:700">main FAQ</a>.</p></div>
+    <div class="head c"><span class="eyebrow">Before you ask</span><h2>Questions about the Launchpad.</h2><p>General questions about LeepX, refunds and payments are answered on the <a href="./#faq" style="color:var(--purple);font-weight:700">main FAQ</a>.</p></div>
     {faq([
       ('Are there live classes I have to attend?','No. All the teaching is recorded and released weekly, so you learn whenever it suits you. The only live commitments are the eight Sunday Q&As and the two bonus sessions, and every one of those is recorded as well.'),
       ('What actually happens in a Sunday Q&A?','You bring questions from that week’s lessons and from your own work in progress: your CV, your LinkedIn, an outreach message that got no reply, a role you are unsure about. Shreya answers them live. It is a working session, not a lecture.'),
@@ -505,7 +505,7 @@ smm_body = f"""
 
 <section class="sec soft" id="faq">
   <div class="wrap">
-    <div class="head c"><span class="eyebrow">Questions, answered</span><h2>Questions about the SMM cohort.</h2><p>General questions about LeepX, refunds and payments are answered on the <a href="index.html#faq" style="color:var(--purple);font-weight:700">main FAQ</a>.</p></div>
+    <div class="head c"><span class="eyebrow">Questions, answered</span><h2>Questions about the SMM cohort.</h2><p>General questions about LeepX, refunds and payments are answered on the <a href="./#faq" style="color:var(--purple);font-weight:700">main FAQ</a>.</p></div>
     {faq([
       ('I’m a fresher with no experience. Can I join?','Yes. The cohort is built around manufacturing proof: from Module 3 you’re producing real content, and by Module 9 you have a portfolio made from your own work. Freshers enter through proof, not years of experience.'),
       ('Will I actually get to practise, or is it just lessons?','You practise every week. Every module ends with hands-on work on real brands: content calendars, hooks and scripts, a full content batch, a strategy doc, a brand audit and a monthly report. You submit it, we give feedback on it. Nothing here is a quiz.'),
@@ -696,7 +696,7 @@ va_body = f"""
 
 <section class="sec soft" id="faq">
   <div class="wrap">
-    <div class="head c"><span class="eyebrow">Questions, answered</span><h2>Questions about the VA program.</h2><p>General questions about LeepX, refunds and payments are answered on the <a href="index.html#faq" style="color:var(--purple);font-weight:700">main FAQ</a>.</p></div>
+    <div class="head c"><span class="eyebrow">Questions, answered</span><h2>Questions about the VA program.</h2><p>General questions about LeepX, refunds and payments are answered on the <a href="./#faq" style="color:var(--purple);font-weight:700">main FAQ</a>.</p></div>
     {faq([
       ('When does the cohort start?','It is an ongoing cohort. You can join any day and start immediately, with access to every module from day one.'),
       ('Do I need prior experience?','No. Many students start from zero. If you have done admin, ops, HR, customer service or project work, you are further ahead than you think.'),
@@ -875,7 +875,7 @@ pm_body = f"""
 
 <section class="sec soft" id="faq">
   <div class="wrap">
-    <div class="head c"><span class="eyebrow">Questions, answered</span><h2>Questions about AI Project Management.</h2><p>General questions about LeepX, refunds and payments are answered on the <a href="index.html#faq" style="color:var(--purple);font-weight:700">main FAQ</a>.</p></div>
+    <div class="head c"><span class="eyebrow">Questions, answered</span><h2>Questions about AI Project Management.</h2><p>General questions about LeepX, refunds and payments are answered on the <a href="./#faq" style="color:var(--purple);font-weight:700">main FAQ</a>.</p></div>
     {faq([
       ('Do I need prior project management or tech experience?','No. The program starts with the fundamentals and is designed for freshers, career switchers and working professionals alike.'),
       ('When are the live sessions? What if I miss one?','On weekends, eight of them across the 16 weeks, so your weekday schedule stays untouched. Every session is recorded, so if you miss one you can watch it later and the community Q&A keeps you on track.'),

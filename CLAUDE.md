@@ -33,7 +33,7 @@ Published automatically by GitHub Pages from `main` (see `.github/workflows/depl
 
 ## Workflow for any change
 1. Make the edit. If it touches a course page, run `python3 tools/course-pages.py`.
-2. Preview: `python3 -m http.server 4601 --directory site`, check desktop and 390px mobile.
+2. Preview: `python3 tools/serve.py`, check desktop and 390px mobile.
 3. Add a dated line to `docs/Assessment-Logic.md` changelog.
 4. Commit with a plain-English message and push to `main`. GitHub publishes it in about a minute.
 5. Tell the user what changed and the live URL to check.

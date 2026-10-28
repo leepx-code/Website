@@ -32,11 +32,11 @@ import json
 BRIDGE = """<script>
 if (window.parent !== window) document.addEventListener('click', function (e) {
   var a = e.target.closest ? e.target.closest('a') : null; if (!a) return;
-  var h = a.getAttribute('href') || '', m = h.match(/^(privacy|terms)\\.html(?:#(.*))?/), c = h.match(/^(remote-launchpad|social-media-manager|virtual-assistant|ai-project-manager|masterclass)\\.html/);
+  var h = a.getAttribute('href') || '', m = h.match(/^(privacy|terms)(?:\\.html)?(?:[?#](.*))?$/), c = h.match(/^(remote-launchpad|social-media-manager|virtual-assistant|ai-project-manager|masterclass)(?:\\.html)?(?:[?#].*)?$/);
   if (m) { e.preventDefault(); parent.postMessage({ leepx: 'legal', page: m[1], hash: m[2] || '' }, '*'); }
   else if (c) { e.preventDefault(); parent.postMessage({ leepx: 'page', page: c[1] }, '*'); }
-  else if (h.indexOf('assess.html') === 0) { e.preventDefault(); parent.postMessage({ leepx: 'assess' }, '*'); }
-  else if (h.indexOf('index.html') === 0) { e.preventDefault(); parent.postMessage({ leepx: 'close', hash: h.split('#')[1] || '' }, '*'); }
+  else if (/^assess(?:\\.html)?(?:[?#]|$)/.test(h)) { e.preventDefault(); parent.postMessage({ leepx: 'assess' }, '*'); }
+  else if (/^(index\\.html|\\.\\/|\\/)(?:[?#]|$)/.test(h)) { e.preventDefault(); parent.postMessage({ leepx: 'close', hash: h.split('#')[1] || '' }, '*'); }
 });
 </script></body>"""
 
@@ -77,7 +77,7 @@ overlay = f"""
   function openLegal(page,hash){{ lf.onload=function(){{ if(hash){{ const el=lf.contentDocument.getElementById(hash); if(el) el.scrollIntoView(); }} }}; lf.srcdoc=LEGAL[page]; lg.classList.add('open'); lock(); }}
   function closeLegal(){{ lg.classList.remove('open'); lf.srcdoc=''; lock(); }}
   document.querySelectorAll('a[href="#assess"]').forEach(a=>a.addEventListener('click',e=>{{e.preventDefault();history.pushState(null,'','#assess');open();}}));
-  document.addEventListener('click',e=>{{ const a=e.target.closest('a'); if(!a) return; const h=a.getAttribute('href')||''; const m=h.match(/^(privacy|terms)\\.html(?:#(.*))?/); if(m){{ e.preventDefault(); openLegal(m[1],m[2]||''); return; }} const c=h.match(/^(remote-launchpad|social-media-manager|virtual-assistant|ai-project-manager|masterclass)\\.html/); if(c){{ e.preventDefault(); openPage(c[1]); }} }});
+  document.addEventListener('click',e=>{{ const a=e.target.closest('a'); if(!a) return; const h=a.getAttribute('href')||''; const m=h.match(/^(privacy|terms)(?:\\.html)?(?:[?#](.*))?$/); if(m){{ e.preventDefault(); openLegal(m[1],m[2]||''); return; }} const c=h.match(/^(remote-launchpad|social-media-manager|virtual-assistant|ai-project-manager|masterclass)(?:\\.html)?(?:[?#].*)?$/); if(c){{ e.preventDefault(); openPage(c[1]); }} }});
   window.addEventListener('message',e=>{{ const d=e.data||{{}}; if(d.leepx==='legal') openLegal(d.page,d.hash); else if(d.leepx==='page') openPage(d.page); else if(d.leepx==='assess'){{ history.pushState(null,'','#assess'); open(); }} else if(d.leepx==='close'){{ if(lg.classList.contains('open')) closeLegal(); else if(ov.classList.contains('open')) close(d.hash); else {{ closePage(); if(d.hash){{ const el=document.getElementById(d.hash); if(el) el.scrollIntoView(); }} }} }} }});
   function route(){{ const h=location.hash.slice(1); if(h==='assess'){{ if(pg.classList.contains('open')) closePage(); open(); }} else if(PAGES[h]){{ if(ov.classList.contains('open')) ov.classList.remove('open'); openPage(h,true); }} else {{ if(pg.classList.contains('open')) closePage(); if(ov.classList.contains('open')) close(h); }} }}
   window.addEventListener('popstate',route);

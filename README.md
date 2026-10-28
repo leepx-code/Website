@@ -12,5 +12,5 @@ Static site, no framework. Live site is published automatically from the `main` 
 Preview locally:
 
 ```bash
-python3 -m http.server 4601 --directory site
+python3 tools/serve.py
 ```

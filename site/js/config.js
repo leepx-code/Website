@@ -18,7 +18,7 @@ window.LEEPX_CONFIG = {
   // Waitlist cohorts (Freelancing, AI-powered Project Manager). Empty = open WhatsApp with a ready-made waitlist message.
   WAITLIST_URL: '',
   // Floating "Upcoming Masterclass" button. Hidden automatically from MASTERCLASS_UNTIL (YYYY-MM-DD, India time). Empty URL = no button.
-  MASTERCLASS_URL: 'masterclass.html',
+  MASTERCLASS_URL: 'masterclass',
   MASTERCLASS_UNTIL: '2026-11-14',
   COMMUNITY_URL: 'https://academy.theleepx.com/l/ad00303ec0',
 

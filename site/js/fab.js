@@ -6,8 +6,9 @@
   if (!url) return;
   // Not on the masterclass page itself: the visitor is already there.
   var page = document.body && document.body.getAttribute('data-page');
-  var here = (location.pathname.split('/').pop() || '').toLowerCase();
-  if (page === 'masterclass' || (here && url.toLowerCase().indexOf(here) === 0)) return;
+  var base = function (u) { return (u.split(/[?#]/)[0].split('/').pop() || '').replace(/\.html$/, '').toLowerCase(); };
+  var here = base(location.pathname);
+  if (page === 'masterclass' || (here && here === base(url))) return;
   if (until && new Date() >= new Date(until + 'T00:00:00+05:30')) return;
   var a = document.createElement('a');
   a.className = 'fab'; a.href = url; if (/^https?:/.test(url)) { a.target = '_blank'; a.rel = 'noopener'; }
