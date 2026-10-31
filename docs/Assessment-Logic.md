@@ -427,3 +427,4 @@ Order is now: Where you stand → What you told us (left) with What you are miss
 - 2026-10-27 later: AI tools section rebuilt as logo cards (toolcards() helper, .tcards/.tcard/.lg CSS). Brand marks in site/assets/logos/ (simple-icons CC0 + Wikimedia Commons: chatgpt, claude, sheets, jira, confluence, zapier, make, copilot, gemini, n8n, notion, power-automate). make-upload.sh now copies assets/logos.
 - 2026-10-28: moved hosting to GitHub Pages (repo leepx-code/Website). All internal links extension-less (/ai-project-manager, /assess, ./). tools/serve.py = local preview with clean URLs. _redirects removed (Netlify only).
 - 2026-10-28: index.html redirects #slug hash links (from the old single-file deploy) to the real page.
+- 2026-10-31: VA checkout link changed to https://academy.theleepx.com/l/f8d6f79725 (course page buttons + config CHECKOUT.va for the result page).

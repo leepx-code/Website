@@ -519,7 +519,7 @@ smm_body = f"""
 
 
 # ===================================================================== VIRTUAL ASSISTANT
-VA_BUY = 'https://academy.theleepx.com/web/checkout/6a1b333e808d71fed1f65298?purchaseNow=true'
+VA_BUY = 'https://academy.theleepx.com/l/f8d6f79725'
 
 va_body = f"""
 <section class="chero compact" id="top">

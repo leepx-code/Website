@@ -9,7 +9,7 @@ window.LEEPX_CONFIG = {
     launchpad: 'https://academy.theleepx.com/l/84561c3c5b',   // Remote Launchpad (Remote Career Launchpad Plus)
     linkedin: 'https://academy.theleepx.com/l/e44abed2fc',    // Attract inbound via LinkedIn
     smm: 'https://academy.theleepx.com/web/checkout/6a7739472e3b4113124f0600',   // Become a Social Media Manager
-    va: 'https://academy.theleepx.com/web/checkout/6a1b333e808d71fed1f65298?purchaseNow=true',
+    va: 'https://academy.theleepx.com/l/f8d6f79725',
     pm: 'https://academy.theleepx.com/l/c48219926c',          // Become a Virtual Assistant
   },
 
