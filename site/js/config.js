@@ -23,6 +23,6 @@ window.LEEPX_CONFIG = {
   COMMUNITY_URL: 'https://academy.theleepx.com/l/ad00303ec0',
 
   // Visitor tracking. Empty = off.
-  GA_ID: '',        // Google Analytics Measurement ID, looks like G-XXXXXXXXXX
+  GA_ID: 'G-XXT6HW7TFC',        // Google Analytics Measurement ID, looks like G-XXXXXXXXXX
   CLARITY_ID: '',   // Microsoft Clarity Project ID, looks like abcd1234ef
 };
