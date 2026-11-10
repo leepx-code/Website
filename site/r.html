@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LeepX</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<script>
+/* Short-link redirector. theleepx.com/r?CODE  ->  full page URL with UTM tags.
+   CODE = [page[.source[.medium]]/]campaign   e.g.  r?pm/r-DABCxyz   r?pm.li.story/launch-oct
+   Defaults: home page, instagram, reel. Codes must match site/links.html. */
+(function(){
+  var PAGE={h:'',a:'assess',lp:'remote-launchpad',pm:'ai-project-manager',smm:'social-media-manager',va:'virtual-assistant',mc:'masterclass'};
+  var SRC={ig:'instagram',li:'linkedin',yt:'youtube',wa:'whatsapp',em:'email'};
+  var MED={reel:'reel',story:'story',bio:'bio',post:'post',dm:'dm',nl:'newsletter'};
+  var q=(location.search||'').replace(/^\?/,'').split('&')[0];
+  try{q=decodeURIComponent(q)}catch(e){}
+  var i=q.indexOf('/'),head=i<0?'':q.slice(0,i),camp=i<0?q:q.slice(i+1);
+  var h=head?head.split('.'):[];
+  var page=h[0]in PAGE?PAGE[h[0]]:'',src=SRC[h[1]]||'instagram',med=MED[h[2]]||'reel';
+  camp=(camp||'').replace(/[^A-Za-z0-9_-]/g,'').slice(0,60);
+  var to='/'+page;
+  if(camp) to+='?utm_source='+src+'&utm_medium='+med+'&utm_campaign='+camp;
+  location.replace(to);
+})();
+</script>
+</head>
+<body style="font-family:system-ui,sans-serif;padding:24px;color:#525259">Taking you to LeepX… <a href="/">Continue</a></body>
+</html>

@@ -29,7 +29,11 @@
   input:focus,select:focus{border-color:var(--purple);box-shadow:0 0 0 3px var(--p-100)}
   .hint{font-size:13px;color:var(--n-500);margin-top:6px;line-height:1.5}
   .slug{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--purple)}
-  .out{margin-top:18px;background:var(--ink);color:#fff;border-radius:14px;padding:16px;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.6;word-break:break-all;min-height:58px}
+  .outlab{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin-top:18px}
+  .outlab span{font-weight:600;letter-spacing:0;text-transform:none;color:var(--n-500)}
+  .out.long{font-size:12px;padding:12px 14px;min-height:0;background:var(--n-100);color:var(--n-700)}
+  .out.long .u{color:var(--p-600)}
+  .out{margin-top:8px;background:var(--ink);color:#fff;border-radius:14px;padding:16px;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.6;word-break:break-all;min-height:58px}
   .out .u{color:var(--lime)}
   .out.empty{color:var(--n-400)}
   .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
@@ -41,9 +45,10 @@
   .item{background:#fff;border:1.5px solid var(--n-200);border-radius:14px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center}
   .item b{font-size:15px}
   .item .meta{font-size:12px;color:var(--n-500);margin-top:2px}
+  .item .meta a{color:var(--purple);font-weight:700;text-decoration:none}
   .item .url{grid-column:1/-1;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--n-600);word-break:break-all}
   .item .acts{display:flex;gap:6px}
-  .item button{font:inherit;font-weight:700;font-size:13px;padding:8px 12px;border-radius:999px;border:1.5px solid var(--n-200);background:#fff;cursor:pointer;color:var(--ink)}
+  .item button{font:inherit;font-weight:700;font-size:13px;padding:8px 11px;border-radius:999px;border:1.5px solid var(--n-200);background:#fff;cursor:pointer;color:var(--ink)}
   .item button:hover{border-color:var(--purple);color:var(--purple)}
   .item button.del:hover{border-color:var(--coral);color:var(--coral)}
   .none{color:var(--n-500);font-size:14px;background:#fff;border:1.5px dashed var(--n-300);border-radius:14px;padding:16px;text-align:center}
@@ -62,9 +67,9 @@
   <div class="card">
     <div class="grid">
       <div class="full">
-        <label for="name">Reel name</label>
-        <input id="name" type="text" placeholder="e.g. AI PM salary reel" autocomplete="off" autofocus />
-        <p class="hint">Becomes <span class="slug" id="slugPreview">reel-name</span> in the link. Keep it short and unique per reel.</p>
+        <label for="name">Reel link or name</label>
+        <input id="name" type="text" placeholder="Paste the Instagram reel link, or type a name" autocomplete="off" autofocus />
+        <p class="hint">Tag in the link: <span class="slug" id="slugPreview">reel-name</span>. A pasted reel link uses the reel's own ID.</p>
       </div>
       <div>
         <label for="page">Send people to</label>
@@ -101,10 +106,14 @@
       </div>
     </div>
 
-    <div class="out empty" id="out">Type a reel name to get the link.</div>
+    <div class="outlab">Short link <span>· put this in bio, comments, DMs</span></div>
+    <div class="out empty" id="out">Paste a reel link or type a name.</div>
+    <div class="outlab">Full link <span>· same thing, longer</span></div>
+    <div class="out long empty" id="outLong">—</div>
     <div class="row">
-      <button class="btn btn-primary" id="copy" type="button" disabled>Copy link</button>
+      <button class="btn btn-primary" id="copy" type="button" disabled>Copy short link</button>
       <button class="btn btn-ghost" id="save" type="button" disabled>Copy &amp; save to list</button>
+      <button class="btn btn-ghost" id="copyLong" type="button" disabled>Copy full link</button>
     </div>
     <div class="ok" id="ok"></div>
   </div>
@@ -116,8 +125,8 @@
   <div class="how">
     <b>How to use</b>
     <ol>
-      <li>Make the link here, then shorten it at <b>bit.ly</b> if it needs to look clean. Shortening keeps the tracking.</li>
-      <li>Put the short link in the reel's pinned comment, your bio, or the DM auto-reply.</li>
+      <li>Paste the reel link (or type a name), copy the <b>short link</b>.</li>
+      <li>Put it in the reel's pinned comment, your bio, or the DM auto-reply. The short link lives on theleepx.com and sends people to the full tracked link.</li>
       <li>Read results in GA4: <b>Reports → Acquisition → Traffic acquisition</b>, change the dropdown to <b>Session campaign</b>. One row per reel.</li>
     </ol>
   </div>
@@ -126,18 +135,33 @@
 (function(){
   var BASE='https://theleepx.com/';
   var $=function(id){return document.getElementById(id)};
-  var name=$('name'),page=$('page'),source=$('source'),medium=$('medium'),out=$('out'),copy=$('copy'),save=$('save'),ok=$('ok'),list=$('list'),slugPreview=$('slugPreview');
+  var name=$('name'),page=$('page'),source=$('source'),medium=$('medium'),out=$('out'),outLong=$('outLong'),copy=$('copy'),copyLong=$('copyLong'),save=$('save'),ok=$('ok'),list=$('list'),slugPreview=$('slugPreview');
   var KEY='lx_links';
+  // Short codes understood by r.html. Keep both files in sync.
+  var PAGE={'':'h','assess':'a','remote-launchpad':'lp','ai-project-manager':'pm','social-media-manager':'smm','virtual-assistant':'va','masterclass':'mc'};
+  var SRC={instagram:'ig',linkedin:'li',youtube:'yt',whatsapp:'wa',email:'em'};
+  var MED={reel:'reel',story:'story',bio:'bio',post:'post',dm:'dm',newsletter:'nl'};
   function slug(s){return (s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40)}
+  function reelId(s){var m=/instagram\.com\/(?:[^\/]+\/)?(?:reel|reels|p)\/([A-Za-z0-9_-]+)/.exec(s||'');return m?m[1]:''}
+  function campaign(){var id=reelId(name.value);return id?('r-'+id):slug(name.value)}
+  function links(){
+    var c=campaign(); if(!c) return null;
+    var long=BASE+(page.value||'')+'?utm_source='+source.value+'&utm_medium='+medium.value+'&utm_campaign='+c;
+    var head=[PAGE[page.value]||'h'];
+    if(source.value!=='instagram'||medium.value!=='reel'){head.push(SRC[source.value]);}
+    if(medium.value!=='reel'){head.push(MED[medium.value]);}
+    var short=BASE+'r?'+head.join('.')+'/'+c;
+    if(head.length===1&&head[0]==='h') short=BASE+'r?'+c;
+    return {c:c,long:long,short:short};
+  }
   function build(){
-    var c=slug(name.value);
-    slugPreview.textContent=c||'reel-name';
-    if(!c){out.className='out empty';out.textContent='Type a reel name to get the link.';copy.disabled=save.disabled=true;return ''}
-    var url=BASE+(page.value?page.value:'')+'?utm_source='+source.value+'&utm_medium='+medium.value+'&utm_campaign='+c;
-    out.className='out';
-    out.innerHTML=BASE+(page.value||'')+'<span class="u">?utm_source='+source.value+'&amp;utm_medium='+medium.value+'&amp;utm_campaign='+c+'</span>';
-    copy.disabled=save.disabled=false;
-    return url;
+    var l=links();
+    slugPreview.textContent=l?l.c:'reel-name';
+    if(!l){out.className='out empty';out.textContent='Paste a reel link or type a name.';outLong.className='out long empty';outLong.textContent='—';copy.disabled=save.disabled=copyLong.disabled=true;return null}
+    out.className='out';out.innerHTML=BASE+'r<span class="u">'+l.short.slice(BASE.length+1).replace(/&/g,'&amp;')+'</span>';
+    outLong.className='out long';outLong.innerHTML=l.long.replace(/&/g,'&amp;').replace(/\?utm_(.*)$/,'<span class="u">?utm_$1</span>');
+    copy.disabled=save.disabled=copyLong.disabled=false;
+    return l;
   }
   function doCopy(url,msg){
     var done=function(){ok.textContent=msg||'Copied.';setTimeout(function(){ok.textContent=''},2200)};
@@ -152,25 +176,28 @@
     if(!a.length){list.innerHTML='<div class="none">No saved links yet.</div>';return}
     list.innerHTML=a.map(function(x,i){
       var d=new Date(x.t);
-      return '<div class="item"><div><b>'+esc(x.name)+'</b><div class="meta">'+esc(x.where)+' · '+d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})+'</div></div>'+
-        '<div class="acts"><button type="button" data-copy="'+i+'">Copy</button><button type="button" class="del" data-del="'+i+'">Delete</button></div>'+
-        '<div class="url">'+esc(x.url)+'</div></div>';
+      return '<div class="item"><div><b>'+esc(x.name)+'</b><div class="meta">'+esc(x.where)+' · '+d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})+(x.reel?' · <a href="'+esc(x.reel)+'" target="_blank" rel="noopener">open reel</a>':'')+'</div></div>'+
+        '<div class="acts"><button type="button" data-copy="'+i+'">Copy short</button><button type="button" data-copylong="'+i+'">Copy full</button><button type="button" class="del" data-del="'+i+'">Delete</button></div>'+
+        '<div class="url">'+esc(x.short||x.url)+'</div></div>';
     }).join('');
   }
   list.addEventListener('click',function(e){
     var b=e.target.closest('button');if(!b)return;
     var a=load();
-    if(b.dataset.copy!=null){doCopy(a[+b.dataset.copy].url)}
+    if(b.dataset.copy!=null){doCopy(a[+b.dataset.copy].short||a[+b.dataset.copy].url)}
+    if(b.dataset.copylong!=null){doCopy(a[+b.dataset.copylong].url,'Full link copied.')}
     if(b.dataset.del!=null){if(confirm('Delete this saved link?')){a.splice(+b.dataset.del,1);store(a);render()}}
   });
   [name,page,source,medium].forEach(function(el){el.addEventListener('input',build);el.addEventListener('change',build)});
-  copy.addEventListener('click',function(){var u=build();if(u)doCopy(u)});
+  copy.addEventListener('click',function(){var l=build();if(l)doCopy(l.short,'Short link copied.')});
+  copyLong.addEventListener('click',function(){var l=build();if(l)doCopy(l.long,'Full link copied.')});
   save.addEventListener('click',function(){
-    var u=build();if(!u)return;
+    var l=build();if(!l)return;
     var a=load();
     var where=source.options[source.selectedIndex].text+' '+medium.options[medium.selectedIndex].text.replace(/\s*\(.*\)$/,'')+' → '+page.options[page.selectedIndex].text;
-    a.unshift({name:name.value.trim()||slug(name.value),where:where,url:u,t:Date.now()});
-    store(a.slice(0,200));render();doCopy(u,'Copied and saved.');
+    var rid=reelId(name.value);
+    a.unshift({name:rid?('Reel '+rid):name.value.trim(),reel:rid?name.value.trim():'',where:where,url:l.long,short:l.short,t:Date.now()});
+    store(a.slice(0,200));render();doCopy(l.short,'Short link copied and saved.');
   });
   build();render();
 })();
