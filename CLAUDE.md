@@ -13,6 +13,7 @@ Published automatically by GitHub Pages from `main` (see `.github/workflows/depl
   Never edit the generated HTML by hand; it is overwritten.
 - Shared CSS: `site/css/leepx.css` (tokens, buttons, stickers, floating button) and `site/css/course.css` (course page sections).
 - Config: `site/js/config.js` (checkout links, WhatsApp number, community URL, masterclass URL and end date, analytics IDs).
+- Internal tool: `site/links.html` (theleepx.com/links) makes UTM links per reel. Hand-edited, noindex, not linked from the site.
 - Assessment logic: `site/js/leepx-logic.js`, documented in `docs/Assessment-Logic.md`. Log every change there with the date.
 
 ## Brand and design rules
