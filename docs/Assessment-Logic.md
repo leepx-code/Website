@@ -431,3 +431,4 @@ Order is now: Where you stand → What you told us (left) with What you are miss
 - 2026-11-09: GA4 enabled, Measurement ID G-XXT6HW7TFC in config.js (loads gtag on every page; cookie notice now shows).
 - 2026-11-10: New internal page site/links.html (theleepx.com/links): UTM link maker for reels. Not linked from the site, noindex. Added to make-upload.sh.
 - 2026-11-10: Link maker now accepts a pasted Instagram reel link (campaign = r-<reel id>) and gives a short link theleepx.com/r?CODE. New site/r.html decodes CODE and redirects to the full UTM link. Page/source/medium codes live in both files; keep in sync.
+- 2026-11-15: Masterclass moved to Saturday 12 December, 4 to 6 PM IST. New checkout https://academy.theleepx.com/web/checkout/6af8a2f1092a3ac3861ea630 (MC_URL in course-pages.py). Recording removed everywhere: chip now 'Ask questions live', FAQ says no recording. MASTERCLASS_UNTIL set to 2026-12-13 so the floating button shows through the session day.

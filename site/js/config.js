@@ -19,7 +19,7 @@ window.LEEPX_CONFIG = {
   WAITLIST_URL: '',
   // Floating "Upcoming Masterclass" button. Hidden automatically from MASTERCLASS_UNTIL (YYYY-MM-DD, India time). Empty URL = no button.
   MASTERCLASS_URL: 'masterclass',
-  MASTERCLASS_UNTIL: '2026-11-14',
+  MASTERCLASS_UNTIL: '2026-12-13',
   COMMUNITY_URL: 'https://academy.theleepx.com/l/ad00303ec0',
 
   // Visitor tracking. Empty = off.

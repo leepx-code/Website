@@ -890,16 +890,16 @@ pm_body = f"""
 
 
 # ===================================================================== MASTERCLASS (free live session)
-MC_URL = 'https://academy.theleepx.com/l/145f740193'
+MC_URL = 'https://academy.theleepx.com/web/checkout/6af8a2f1092a3ac3861ea630'
 
 mc_body = f"""
 <section class="chero compact" id="top">
   <div class="wrap">
-    <span class="eyebrow">Saturday, 14 November · 4 to 6 PM · live</span>
+    <span class="eyebrow">Saturday, 12 December · 4 to 6 PM IST · live</span>
     <h1>Unlock <span class="hl">Global Remote Careers.</span></h1>
     <p class="lead">Learn how to stand out, get shortlisted, and land opportunities with global companies. Two live hours on building an industry-ready profile, applying strategically, and unlocking roles worldwide. No generic advice, just practical steps you can use the same night.</p>
     <div class="acts"><a class="btn btn-primary" href="{MC_URL}" target="_blank" rel="noopener" data-buy="masterclass">Reserve my spot →</a><a class="btn btn-ghost" href="#learn">See what you learn</a></div>
-    <div class="chips">{chips([('hourglass','2 hours, live'),('gift','Freebies included'),('video','Recording for 3 days')])}</div>
+    <div class="chips">{chips([('hourglass','2 hours, live'),('gift','Freebies included'),('message-circle','Ask questions live')])}</div>
   </div>
 </section>
 
@@ -1009,7 +1009,7 @@ mc_body = f"""
     <div class="head c"><span class="eyebrow">Questions, answered</span><h2>Questions about the masterclass.</h2></div>
     {faq([
       ('Do I need prior experience?','No. The session is beginner-friendly and designed for anyone who wants to build a global career, whether you are a student, a fresher or switching lanes after years in another field.'),
-      ('Will I get the recording?','Yes. The recording stays available for 3 days after the session, so you can revisit anything you missed. That said, attending live is where the real value sits: you can ask questions and get answers in the room.'),
+      ('Will I get the recording?','No. There is no recording for this session. We have seen the best results when learners attend live with full attention instead of saving it for later. Being in the room also means you can ask questions and get answers on the spot.'),
       ('Will this masterclass help me get a job?','This masterclass will not guarantee a job, but it will give you the roadmap, tools and strategies to build an industry-ready profile and confidently apply for global opportunities.'),
       ('What exactly do I need on the day?','Two uninterrupted hours, a notebook, and your current CV or LinkedIn open so you can apply things as we go.')])}
   </div>
@@ -1047,10 +1047,10 @@ COURSES = [
          final_cta='Join the program →', final_href=PM_BUY, final_attrs='target="_blank" rel="noopener" data-buy="pm"', cta_href=PM_BUY, body=pm_body),
     dict(file='masterclass.html', slug='masterclass',
          title='Unlock Global Remote Careers · live masterclass with Shreya Mahendru · LeepX',
-         desc='Saturday, 14 November, 4 to 6 PM, live. Two hours on building an industry-ready profile, applying strategically and unlocking roles with global companies. Freebies included, recording for 3 days.',
-         cta_short='Reserve my spot →', mcta_small='Sat 14 Nov · 4 to 6 PM · live',
+         desc='Saturday, 12 December, 4 to 6 PM IST, live. Two hours on building an industry-ready profile, applying strategically and unlocking roles with global companies. Freebies included. Live only, no recording.',
+         cta_short='Reserve my spot →', mcta_small='Sat 12 Dec · 4 to 6 PM IST · live',
          final_h='Your global career starts with one decision.',
-         final_p='Join Unlock Global Remote Careers and take the first step towards working with companies across the world. Live session, recording for 3 days, freebies included.',
+         final_p='Join Unlock Global Remote Careers and take the first step towards working with companies across the world. Live session, freebies included.',
          final_cta='Reserve my spot →', final_href=MC_URL, final_attrs='target="_blank" rel="noopener" data-buy="masterclass"', cta_href=MC_URL, body=mc_body),
 ]
 
